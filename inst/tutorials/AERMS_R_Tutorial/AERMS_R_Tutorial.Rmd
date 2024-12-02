@@ -1,0 +1,359 @@
+---
+title: "Arts Education Research Methods Summit: Intro to R"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+
+```{r setup, include=FALSE}
+library(learnr)
+library(osfr)
+library(tidyverse)
+library(rstatix)
+knitr::opts_chunk$set(echo = TRUE)
+options(tutorial.storage = list(
+  save_object = function(...) { },
+  get_object = function(...) NULL,
+  get_objects = function(...) list(),
+  remove_all_objects = function(...) { }
+))
+```
+
+## Introduction
+
+This is a series of tutorial exercises to familiarize yourself with the basic functions of [R](https://www.r-project.org/)--when working within the [R Studio environment](https://posit.co/download/rstudio-desktop/).
+
+R is free, open-source software and a programming language that can be used for data analysis, visualization, and more. Contributors to R create **packages** that, once installed, will provide you with Virtually any statistical analysis tool you could ever need as an arts education researcher.
+
+The benefit of an open-source software package is that anyone with the requisite programming skill can contribute to its development and it can continually adapt to emerging possibilities.
+
+The programming language can appear opaque at first, but a combination of (a) a little knowledge, (b) practice, and (c) strategic "googling" will eventually allow you to use R for a wide variety of tasks fairly quickly.
+
+## Creating an R Project to Organize your Data Analysis Files
+
+### *R Projects*
+The "learning curve" for working with R can at first be fairly steep. Getting started in the R Studio
+environment, organizing and accessing files, and even loading a data set for analysis can be tricky obstacles in and of themselves.
+
+Working with **R Projects** in R Studio will help smooth out some of the bumps in the road. Starting an R Project will automatically group all of your files in a single folder/directory and help you avoid problems finding files in R.
+
+|       Setting one up involves the following navigation:
+|            File -> "New Project..."
+|            Then choose to house your R Project in either a "New Directory," i.e., a new folder or
+|            an "Existing Directory," i.e., a folder that already exists on your computer
+\
+Once you create your R Project directory, you will see that the lower right panel of R Studio shows the directory address you created (or chose) and all of the files in that direcoty. You should save any data files you need for your analyses in the same directory. If you do, it will be easier to load your data and use it later on.
+
+If you don't work from an R Project, you will have to manage the directory designations for your files manually ... and that can cause errors and frustration.
+
+### *R Script*
+
+An **R script** file is where you will create and save the code you write for your projects. 
+
+|       Opening an R script file involves the following navigation:
+|            File -> "New File" -> "R Script"  
+\
+If you are working in an R Project, the new script file will automatically be organized with the rest of your project files.
+
+## Basic Elements of the R Programming Language
+
+### *Calculator Functions*
+
+R can be used as a calculator by entering numbers along with the typical operators:
+
+|    +    Addition
+|    -    Subtraction
+|    *    Multiplication
+|    /    Division
+|    ^    Exponentiation
+|    You can also use parentheses () for complex operations
+\
+This is a convenient feature in R that will be useful should you have to transform data or conduct manual computations.
+
+Use the code space below to experiment, click "Run Code" in the upper right to see the output/results:
+
+```{r calculator, exercise = TRUE, exercise.eval = FALSE}
+
+```
+
+### *Commenting in Code*
+It's usually a good idea to make notes that you can refer to later on so that you will know what your code is trying to accomplish at a later date. You can create commented code by using the number sign symbol "#."
+
+Run the following code and notice how the "commented" bits are in a different color as well as how only the non-commented bits are actually run by R.
+
+```{r commenting, exercise = TRUE, exercise.eval = FALSE}
+# This is a comment - it will essentially be ignored by R
+
+4 + 4
+
+# Notice also how this commented operation is ignored by R, that is, not run
+# 4 + 4
+
+# The only thing that will result from all of this code is the answer to 4 + 4
+
+```
+
+### *Data Types*
+
+It is important to recognize the **type** of variable you are using when working in R since it will have major implications for the sorts of anlayses you can conduct and whether you will be able to execute your code without errors.
+
+*There are four levels of measurement commonly described in statistics:*
+
+|     interval and ratio — what is referred to as "scalar" in SPSS
+|     ordinal
+|     nominal
+\
+*R recognizes similar types of variables, but has slightly different distinctions and uses different terminology:*
+
+|     numeric - continuous quantitative values with values following decimal points (10.5, 55.3, 787.0)
+|     integer - discrete quantiative values with no decimal values (1, 55, 100)
+|     factor - discrete categories with each category called a "level" (an analog to a nominal variable) |     ("cat", "dog", "fish")
+|     ordered factor - discrete categories that are ordered (an analogy to an ordinal variable) ("never",
+|     "sometimes", "always")
+\
+*R also recognizes two additional variable types:*
+
+|     character - letters with no additional information attached ("k", "R is exciting", "FALSE", "11.5")
+|     - what is referred to as "string" in SPSS
+|     logical - TRUE or FALSE Boolean values
+
+## Assigning "Objects" and "Storing" Information in the Global Environment
+
+R can store objects in its **global environment**, that is, it's memory. You will see any objects currently in the global environment in the upper right panel of R Studio. 
+
+Storing objects is simply a matter of assigning information to a name and you can do that using a `<-` symbol. You can then call the name in R or perform operations with the object and the information will be displayed as appropriate. See the following examples in the code below:
+
+```{r assign_variables, exercise = TRUE, exercise.eval = FALSE}
+# The lines showing the assignments of numbers to x and y will not result in any output.
+# However, R will have stored the values under those designated assignments.
+x <- 4
+y <- 4
+
+# Each of the following lines will produce output.
+x
+
+y
+
+x + y
+
+z <- (x + y)
+
+z/2
+```
+
+Many things are typically stored as objects when using R, including: variables, data sets (and any modified data sets you create), outputs of analyses, and custom built functions.
+
+### *Vectors*
+
+You can also assign a collection of values, i.e., a **vector** of values, to an object using the **concatenate** function: `c()`. The following code shows the storage of variables of different data types, *numeric*, *integer*, and *character*. YOu will have to use parentheses when inputting character values.
+
+Note that R will do a pretty good job at guessing what type of data the values in each variable represent when the data is numbers. But, R will typically interpret any vectors that contain letters or words as character variables unless directed otherwise. 
+
+```{r assign_vectors, exercise = TRUE, exercise.eval = FALSE}
+# As with the code above, the lines showing the assignments of vectors to each name will not result in any output.
+# However, R will have stored the vectors under those designated assignments.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+
+# Calling the name of each of the vectors will produce output.
+numeric_variable
+
+integer_variable
+
+character_variable
+```
+
+As with single value assignments, R will also allow you to perform operations with stored vectors (or really any kind of data type). See the following as an example:
+
+```{r operate_vectors, exercise = TRUE, exercise.eval = FALSE}
+
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+
+# Perform vector-based operations
+
+numeric_variable*2
+
+integer_variable/2
+
+```
+
+### *Data frames*
+R can store and operate upon all sorts of data objects (values, integers, matrices, and so on). However, the most common object used in statistical analyses is the **dataframe**. A dataframe is R's term for what most would simply call a data set: an arrangement of data with variables as columns and entries as rows.
+
+You can create data frames by assembling vectors of the same length into a single object using the `data.frame()` function. An example of doing this is provided below. 
+```{r assign_dataframe, exercise = TRUE, exercise.eval = FALSE}
+# First, R will store the vectors under designated assignments.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+
+# Then you can bind them together into a dataset called "my_data" with three columns (i.e., variables) and 6 rows (i.e., entries).
+my_data <- data.frame(numeric_variable, integer_variable, character_variable)
+
+my_data
+```
+
+You can also examine a data frame using a variety of different *viewing* functions. See the usage of `head()`: returns the first six rows, `tail()`: returns the last six rows, and `str()`: displays the structure of the data.
+```{r view_dataframe, exercise = TRUE, exercise.eval = FALSE}
+# First, R will store the vectors under designated assignments.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+
+# Then you can bind them together into a dataset called "my_data" with three columns (i.e., variables) and 6 rows (i.e., entries).
+my_data <- data.frame(numeric_variable, integer_variable, character_variable)
+
+head(my_data)
+
+tail(my_data)
+
+str(my_data)
+```
+
+To view a single variable from a dataframe you will need to use an additional symbol the `$` to specify to R that it should search in the particular dataframe the variable is housed in
+
+```{r view_dataframe_select, exercise = TRUE, exercise.eval = FALSE}
+# First, R will store the vectors under designated assignments.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+# Then you can bind them together into a dataset called "my_data" with three columns (i.e., variables) and 6 rows (i.e., entries).
+my_data <- data.frame(numeric_variable, integer_variable, character_variable)
+
+# Use the "$" to call a single variable wihtin a dataframe
+my_data$numeric_variable
+```
+
+You may have noticed earlier that when using the `str()` function the three variables in the data frame were summarized as "num" (i.e., numeric) or "chr" (i.e., character). R assumed that "integer_variable" was a numeric variable type even though none of the values had decimal places. It is often necessary to manually tell R what type of data each variable represents. For example, we can specify that "integer_variable" is an integer type variable with the `as.integer()` function and that the "character_variable" is a factor type variable with the `as.factor()` function. We can replace the original variable in the data frame with the new one, now assigned to its specific type, by using an object assignment approach. Alternatively, we could ask for R to create a new variable in the dataframe to represent the newly specified variable while retaining the original. For example:
+
+```{r view_dataframe_specify, exercise = TRUE, exercise.eval = FALSE}
+# First, R will store the vectors under designated assignments.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+# Then you can bind them together into a dataset called "my_data" with three columns (i.e., variables) and 6 rows (i.e., entries).
+my_data <- data.frame(numeric_variable, integer_variable, character_variable)
+
+# Assign the newly specified variable to the same name as the original to replace it.
+my_data$integer_variable <- as.integer(my_data$integer_variable)
+
+# Assign the newly specified variable to a new name to keep the original too.
+my_data$character_variable_now_factor <- as.factor(my_data$character_variable)
+
+# View the structure of the data again to see the newly specified variables.
+str(my_data)
+```
+## Base R Functions and Installing and Loading Packages
+
+R comes "preloaded" with many, many functions. That is what is referred to as "base" R. However, you can easily expand the funcitonality of R by installing and using extension packages made by open-source developers in the R community. For beginner R users, this can be somewhat confusing since the combination of base functions with the possibilities of functions from additional packages can offer many ways for conducting any given procedure in R. Often, however, additional packages can make procedures in R more user-friendly. All packages that are available for installing using the typical methods within R are documented on the [R website](https://cran.r-project.org/).
+
+Here is an example of downloading a package and loading it for use in R. The [`rstatix`](https://cran.r-project.org/web/packages/rstatix/index.html) package is intended to make some of the most common statistical analyses that social scientists use simple to execute.
+
+```{r install_load_package, exercise = TRUE, exercise.eval = FALSE}
+# Simply using the base R install.packages() function will signal to R to find the package online,
+# download it, and install it for use in your R system.
+install.packages("rstatix")
+
+# To "load" the package, use the base R "library()" function, then all of the functions within the package # # will be available to you. You only need to load a package once during an R session.
+library(rstatix)
+
+```
+
+As an example of the convience and functionality that packages offer, consider that it is possible to calculate descriptive statistics for a given variable in R using base functions such as: `mean()`, `sd()`, `range()`, `min()`, `max()`, `mode()`, and so on. But, there are more convenient ways to get all of those summary statistics and more with only one function from other packages. For example, both the `rstatix` package and the `psych` package have a single function
+
+```{r base_rstatix, exercise = TRUE, exercise.eval = FALSE}
+# These first lines are just creating the dataframe for this example.
+numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
+integer_variable <- c(4, 8, 15, 16, 23, 42, 12, 34, 78, 2)
+character_variable <- c("who", "what", "when", "who", "what", "when", "who", "what",  "who", "what")
+my_data <- data.frame(numeric_variable, integer_variable, character_variable)
+
+# Base R functions for summary statistics
+mean(my_data$numeric_variable)
+sd(my_data$numeric_variable)
+range(my_data$numeric_variable)
+min(my_data$numeric_variable)
+max(my_data$numeric_variable)
+mode(my_data$numeric_variable)
+
+# First "load" the package.
+library(rstatix)
+
+# Then use the "get_summary_stats()" function to get a variety of summary statistics
+get_summary_stats(my_data, numeric_variable)
+
+
+```
+
+### *Tidyverse*
+
+The [**tidyverse**](https://www.tidyverse.org/) refers to a suite of 8 packages created by a number of developers led by Hadley Wickham that are designed to make various data science tasks more intuitive to do in R. This tutorial will incorporate tidyverse-style coding because it can ease the learning curve when it comes to getting started in R. Some tidyverse packages we will use include (a) ggplot2: , (b) dplyr: , (c) readr: , and (d) haven:. However, we will not have to install and load the packages separately as installing and loading `tidyverse` will set you up with all of them at once.
+
+The **rstatix** package demonstrated above is designed to work seemlessly with other packages in the tidyverse.
+
+### *Lavaan*
+
+The [**Lavaan**](https://lavaan.ugent.be/) package was designed by Yves Rosseel for latent variable analyses such as path analysis, confirmatory factor analysis, structural equation modeling, and growth curve models. We will use functions from the Lavaan package when conducting factor analyses.
+
+## Importing and Viewing Various Types of Data Files
+
+Conducting data anlayses in R requires loading your data set (i.e., as an object) into the R Global Environment. Unlike some programs such as SPSS or Excel, there is not a direct data editor associated with R or R Studio. However, there are packages with functions available for reading virtually any type of data file into R.
+
+Four common types of data files you are likely to encounter:
+
+* CSV Files (XXX.csv): "Comma-separated-value" data that can be created in a variety of programs
+* Excel Files (XXX.xlsx): Files create in Excel
+* SPSS Files (XXX.sav): Data editor files created in SPSS (which can contain a good deal of meta-data, e.g., variable names, value labels, and so on)
+* Stata Files (XXX.dta): Data files created in Stata (which can also contain meta-data)
+/
+
+The [**readr](https://readr.tidyverse.org/) package includes a function for importing csv files: `read_csv()`. The [**readxl**](https://readxl.tidyverse.org/) package has a function for important Excel files: `read_xls()`. The [**haven**](https://haven.tidyverse.org/) package includes functions for importing SPSS files: `read_sav()`, and Stata files: `read_dta()`. 
+
+As implied in the bullet list above, some types of data files can be more complex than others. For example, "XXX.csv" files will tend to be very simple, whereas Excel files can have multiple sheets and SPSS or Stata files can come with user-added meta-data. As such, the various functions for reading in different types of data files have many built in options for telling R how to interpret the file. We won't deal with those here, suffice to say it's important to know what's in the file you are reading into R and then checking in came in the way you wanted it to.
+
+The following code demonstrates using functions in the readr package to load each of the data types described above. The data are files included as supplements with the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
+
+```{r import_data, exercise = TRUE, exercise.eval = FALSE}
+# First we will load the packages with the necessary importing functions
+library(readr)
+library(haven)
+
+# Assuming you are working within an R project and that your data files are in
+# the same folder as your project files, importing the data can require very little code.
+
+data_csv <- read_csv("Miksza & Elpus - Chorister data for descriptive analysis examples.csv")
+
+data_SPSS <- read_sav("Miksza & Elpus - Chorister data for descriptive analysis examples.sav")
+
+data_Stata <- read_dta("Miksza & Elpus - Chorister data for descriptive analysis examples.dta")
+
+# Once imported you could use any number of functions to view the data, e.g, head(), tail(), str(), glimpse()
+
+str(data_csv)
+
+```
+
+## Selecting Variables from Dataframes
+
+## Basic Descriptive Analyses
+
+Summary Statistics
+
+Correlation
+
+## Basic Data Visualization with ggplot2
+
+## Basic Inferential Analyses
+
+## Regression Models
+
+## Factor Analysis
