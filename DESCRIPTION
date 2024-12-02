@@ -1,9 +1,8 @@
 Package: AERMS
-Title: This is a package containing R tutorial materials for the Arts Education
-Research Methods Summit 2025.
+Title: This is a package containing R tutorial materials for the AERMS.
 Version: 0.0.0.9000
 Authors@R: 
-    person("Peter", "Miksza", , "petemiksza.com", role = c("aut", "cre"))
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
 Description: It allows users to run the tutorial from a local computer.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
