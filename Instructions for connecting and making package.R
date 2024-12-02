@@ -3,3 +3,6 @@ usethis::create_package("/Users/pmiksza/Library/CloudStorage/OneDrive-IndianaUni
 
 # Code for setting up the tutorial
 usethis::use_tutorial("AERMS_R_Tutorial", "Arts Education Research Methods Summit: Intro to R", open = interactive())
+
+# Code for installing the package on github
+devtools::install_github("pmiksza/AERMS")
