@@ -1,1 +1,1 @@
-This is a description of the packahe.
+This is a description of the AERMS package.
