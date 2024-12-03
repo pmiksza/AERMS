@@ -7,7 +7,6 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
-library(osfr)
 library(tidyverse)
 library(rstatix)
 knitr::opts_chunk$set(echo = TRUE)
@@ -316,13 +315,15 @@ Four common types of data files you are likely to encounter:
 * Stata Files (XXX.dta): Data files created in Stata (which can also contain meta-data)
 /
 
-The [**readr](https://readr.tidyverse.org/) package includes a function for importing csv files: `read_csv()`. The [**readxl**](https://readxl.tidyverse.org/) package has a function for important Excel files: `read_xls()`. The [**haven**](https://haven.tidyverse.org/) package includes functions for importing SPSS files: `read_sav()`, and Stata files: `read_dta()`. 
+The [**readr**](https://readr.tidyverse.org/) package includes a function for importing csv files: `read_csv()`. The [**readxl**](https://readxl.tidyverse.org/) package has a function for important Excel files: `read_xls()`. The [**haven**](https://haven.tidyverse.org/) package includes functions for importing SPSS files: `read_sav()`, and Stata files: `read_dta()`. 
 
 As implied in the bullet list above, some types of data files can be more complex than others. For example, "XXX.csv" files will tend to be very simple, whereas Excel files can have multiple sheets and SPSS or Stata files can come with user-added meta-data. As such, the various functions for reading in different types of data files have many built in options for telling R how to interpret the file. We won't deal with those here, suffice to say it's important to know what's in the file you are reading into R and then checking in came in the way you wanted it to.
 
 The following code demonstrates using functions in the readr package to load each of the data types described above. The data are files included as supplements with the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
 
-```{r import_data, exercise = TRUE, exercise.eval = FALSE}
+Note that this code won't actually run, because importing external files into this tutorial program is too hard for me to figure out how to do.
+
+```{r import_data, eval = FALSE}
 # First we will load the packages with the necessary importing functions
 library(readr)
 library(haven)
