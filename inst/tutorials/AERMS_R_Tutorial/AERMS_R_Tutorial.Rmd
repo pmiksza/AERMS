@@ -546,7 +546,7 @@ Pearson, Spearman, or Kendall.
 
 ```{r correlate, exercise = TRUE, exercise.eval = FALSE}
 # The cor_test() function is quite flexible and intuitive. This code returns
-# a Pearson correlation between Age and Years singing in a vocal ensemble.
+# a Pearson correlation between Age and Years experience in a singing ensemble.
 DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
 
 # There is also a useful function for creating correlation matrices "cor_mat()".
@@ -557,7 +557,7 @@ DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
 # It could also be helpful to be able to examine correlations according to
 # sub-groups. This code first filters the Sex variable so only those reporting
 # are considered in the analyses, then it will result in the Pearson correlation 
-# between Age and Years singing in a vocal ensemble broken out by participants' 
+# between Age and Years experience in a singing ensemble broken out by participants' 
 # reported biological sex.
 DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
   group_by(Sex) %>% cor_test(Age, Years.experience.in.singing.ensemble)
@@ -566,8 +566,133 @@ DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
 
 ## Basic Data Visualization with ggplot2
 
+The graphic capabilities of R are amazing and your options for visualizing data
+are vast. In this section, we'll again use the `DescriptiveData` example dataframe
+to demonstrate how some of the most common types of graphs. We will continue working
+within the **tidyverse** ecosystem and use the extremely flexible package 
+**ggplot2**. 
+
+### *ggplot2*
+
+The "gg" in **ggplot2** refers to the "grammar of graphics," which is a reference
+to a book by Leland Wilkinson. The primary developer of **tidyverse** packages and 
+functions, Hadley Wickham, also developed **ggplot2**. The most basic elements or 
+"layers" of a plot rendered with **ggplot2** include: (a) a dataframe, (b) 
+the designation of "aesthetics" (e.g., the mapping of variables to aesthetic features), 
+and (c) a "geom" (e.g., a shape for the plot such as histogram, boxplot, barchart, 
+scatterplot, and so on). From there, there are many options for building additional
+layers to the plot and a tremendous amount of flexibility in determining the 
+specific look of the features of the plot. When it comes to making beautiful plots, 
+there are too many good books and tutorials online that you can learn from. For our
+purposes here, we will just make basic (albeit ugly) plots.
+
+The most basic code for plot would look something like this:
+
+* First call the function `ggplot()` and specify the data source:
+  + `ggplot(data = your_data)`
+* Next, specify which variables from the dataframe are assigned to which axes using the
+`aes()` function inside of the `ggplot()` function:
+  + `ggplot(data = your_data, aes(x = variable_1))`
+  + (There are many more aesthetic possibilities beyond designating axes)
+* Next, choose a "geom" to indicate what type of plot you are aiming to make by adding
+one of the possible options with a plus sign (`+`) after the `ggplot()` function:
+  +`ggplot(data = your_data, aes(x = variable_1)) + geom_histogram()`
+
+### *Histogram*
+
+Creating a histograms is critical for examining the distribution of a quantitative
+variable. Here is an example of code for creating a histogram of the Age variable
+from the example `DescriptiveData` dataset that follows the generic form described above.
+
+```{r histogram, exercise = TRUE, exercise.eval = FALSE}
+# Note that the "data =" part of the code was removed since the ggplot() function
+# will assume the first argument is the name of the dataframe.
+ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
+```
+
+Use the code space below to try and code a histogram for the Years experience in a
+singing ensemble variable:
+
+```{r histogram_user, exercise = TRUE, exercise.eval = FALSE}
+
+```
+
+### *Boxplot*
+
+Creating a boxplot instead is simply a matter of choosing a different geom. Here 
+is an example of code for creating a boxplot of the Age variable.
+
+```{r boxplot1, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(x = Age)) + geom_boxplot()
+```
+
+You could make it a more typical looking vertical-oriented boxplot by assiging the
+Age variable to y instead of x.
+
+```{r boxplot2, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(y = Age)) + geom_boxplot()
+```
+
+Use the code space below to try and code a boxplot for the Years experience in a 
+singing ensemble variable:
+```{r boxplot_user, exercise = TRUE, exercise.eval = FALSE}
+
+```
+
+### *Bar Chart*
+
+Creating bar charts for nominal (i.e., factor in R) or ordinal variables 
+(i.e., ordered factor in R) can be done with very similar code. 
+
+```{r barchart, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
+```
+
+Creating "stacked" or "dodged" bar charts for two nominal (i.e., factor in R) or ordinal variables 
+(i.e., ordered factor in R) would require assigning a second variable to `fill = variable_2` in the `aes()` function and then specifying an additional argument of `position = "stack"` or 
+`position = "dodge"` within the `geom_bar()` function.
+
+### *Scatterplot*
+
+Creating scatterplots to depict the relationship between two quantitative variables
+will feel similarly intuitive once you get the hang of the grammar of graphics approach.
+Here is a scatterplot of the Age and Years experience in a singing ensemble variables.
+
+```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(x = Age,
+                            y = Years.experience.in.singing.ensemble)) + geom_point()
+```
+
+Adding a layer consisting of a line of best fit and the associated standard error
+can be done by adding another layer with `geom_smooth()` along with an argument 
+specifying a linear model: `method = "lm". (Clearly this is a very weak/non-existent 
+correlation!)
+
+```{r scatterplot2, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(x = Age,
+                            y = Years.experience.in.singing.ensemble)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
 ## Basic Inferential Analyses
 
-## Regression Models
+### **Using Formula Notation**
+
+### **Comparing Two Independent Samples**
+
+### **Effect Size for Comparing Two Independent Samples**
+
+### **Comparing More than Two Independent Samples**
+
+### **Effect Size for Comparing More than Two Independent Samples**
+
+### **Post-Hoc Tests**
+
+### **Dependent Smaples and Mixed Designs**
+
+## Linear Regression Models
+
+### **Model Comparison**
 
 ## Factor Analysis
