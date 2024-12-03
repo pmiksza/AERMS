@@ -345,6 +345,12 @@ str(data_csv)
 
 ## Selecting Variables from Dataframes
 
+```{r selectvars, exercise = TRUE, exercise.eval = FALSE}
+
+glimpse(mtcars)
+
+```
+
 ## Basic Descriptive Analyses
 
 Summary Statistics
