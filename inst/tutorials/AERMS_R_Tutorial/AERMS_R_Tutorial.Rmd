@@ -711,7 +711,6 @@ one of the possible options with a plus sign (`+`) after the `ggplot()` function
 Creating a histograms is critical for examining the distribution of a quantitative
 variable. Here is an example of code for creating a histogram of the Age variable
 from the example `DescriptiveData` dataset that follows the generic form described above.
-
 ```{r histogram, exercise = TRUE, exercise.eval = FALSE}
 # Note that the "data =" part of the code was removed since the ggplot() function
 # will assume the first argument is the name of the dataframe.
@@ -720,7 +719,6 @@ ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
 
 Use the code space below to try and code a histogram for the Years experience in a
 singing ensemble variable:
-
 ```{r histogram_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -729,14 +727,12 @@ singing ensemble variable:
 
 Creating a boxplot instead is simply a matter of choosing a different geom. Here 
 is an example of code for creating a boxplot of the Age variable.
-
 ```{r boxplot1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age)) + geom_boxplot()
 ```
 
 You could make it a more typical looking vertical-oriented boxplot by assiging the
 Age variable to y instead of x.
-
 ```{r boxplot2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(y = Age)) + geom_boxplot()
 ```
@@ -751,7 +747,6 @@ singing ensemble variable:
 
 Creating bar charts for nominal (i.e., factor in R) or ordinal variables 
 (i.e., ordered factor in R) can be done with very similar code. 
-
 ```{r barchart, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
 ```
@@ -759,13 +754,18 @@ ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar(
 Creating "stacked" or "dodged" bar charts for two nominal (i.e., factor in R) or ordinal variables 
 (i.e., ordered factor in R) would require assigning a second variable to `fill = variable_2` in the `aes()` function and then specifying an additional argument of `position = "stack"` or 
 `position = "dodge"` within the `geom_bar()` function.
+```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE}
+ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
+                            fill = Sex)) + geom_bar(position = "dodge")
+# Note that this plot is particularly odd since there are "empty cells" for 
+# some combinations of these two variables.
+```
 
 ### *Scatterplot*
 
 Creating scatterplots to depict the relationship between two quantitative variables
 will feel similarly intuitive once you get the hang of the grammar of graphics approach.
 Here is a scatterplot of the Age and Years experience in a singing ensemble variables.
-
 ```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + geom_point()
@@ -775,7 +775,6 @@ Adding a layer consisting of a line of best fit and the associated standard erro
 can be done by adding another layer with `geom_smooth()` along with an argument 
 specifying a linear model: `method = "lm". (Clearly this is a very weak/non-existent 
 correlation!)
-
 ```{r scatterplot2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + 
