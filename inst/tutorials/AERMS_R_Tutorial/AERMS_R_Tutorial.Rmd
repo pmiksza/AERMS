@@ -382,12 +382,12 @@ have to install and load the packages separately as installing and loading
 The **rstatix** package demonstrated above is designed to work seamlessly with 
 other packages in the tidyverse as well.
 
-### *Lavaan*
+### *lavaan*
 
-The [**Lavaan**](https://lavaan.ugent.be/) package was designed by Yves Rosseel 
+The [**lavaan**](https://lavaan.ugent.be/) package was designed by Yves Rosseel 
 for anlaysis tasks such as path analysis, confirmatory factor analysis, structural 
 equation modeling, and growth curve models. We will use functions from the 
-**Lavaan** package when conducting factor analyses.
+**lavaan** package when conducting factor analyses.
 
 ## Importing and Viewing Various Types of Data Files
 
@@ -438,7 +438,7 @@ data_SPSS <- read_sav("Miksza & Elpus - Chorister data for descriptive analysis 
 data_Stata <- read_dta("Miksza & Elpus - Chorister data for descriptive analysis examples.dta")
 
 # Once imported you could use any number of functions to view the data, 
-# e.g, head(), tail(), str(), glimpse()
+# e.g, "head()," "tail()," "str()," "glimpse()."
 str(data_csv)
 ```
 
@@ -473,18 +473,19 @@ variables using these data. There is also space for you to try each function out
 
 ```{r select, exercise = TRUE, exercise.eval = FALSE}
 # First we start with the dataframe object then use the pipe to indicate that we
-# want to pass the data to the following function, then we call the name of the 
-# variable we want to select within the select() function, and then we can call a 
+# want to pass the data to another  function, then we call the name of the 
+# variable we want to select within the "select()" function, and then we can call a 
 # function that we would like to use to act upon the selected variable - note 
 # that you don't need to actually write the name of the variable in the final function.
 
 # This is an example of selecting the "Age" variable and then identifying the
-# minimum value (i.e., the youngest age).
+# minimum age value (i.e., the youngest age).
 DescriptiveData %>% select(Age) %>% min()
 ```
 
-Use the code space below to try out the select() function and the max() function to
-identify the largest number of years of experience in a singing ensemble among the participants:
+Use the code space below to try out the `select()` function and the `max()` 
+function to identify the largest number of years of experience in a singing 
+ensemble among the participants:
 ```{r select_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -494,35 +495,37 @@ identify the largest number of years of experience in a singing ensemble among t
 ```{r filter, exercise = TRUE, exercise.eval = FALSE}
 # Again, we start with the dataframe object then use the pipe to indicate that we
 # want to pass the data to the following function, then we call the name of the 
-# variable we want to use to slice our data within the filter() function. 
+# variable we want to use to to filter our data within the "filter()" function. 
 
 # You can then continue with another pipe to act upon the filtered data with 
 # additional functions, or you could create a new dataset from the filtered data 
 # assigning the entire line of code to a newly named object.
 
 # Here is an example of filtering the data so that only those who are 40 years or
-# older remain, and then a call of the count() function to show how many of the original 115 # participants are in the newly filtered data.
+# older remain, and then a call of the count() function to show how many of the 
+# original 115 participants are left in the newly filtered data.
 DescriptiveData %>% filter(Age >= 40) %>% count()
 
 # Here is what it would look like to filter the data as above and then to assign
-# newly filtered data to a new dataframe object
+# the newly filtered data to a new dataframe object
 DescriptiveData_Filtered <- DescriptiveData %>% filter(Age >= 40)
 
-# You can use the head(), tail(), glimpse(), or str() functions to view the new 
-# dataframe titled DescriptiveData_Filtered
-
+# You could use the "head()," "tail()," "glimpse()," or "str()" functions to view
+# the new dataframe titled "DescriptiveData_Filtered." (That's not included here
+# for the sake of saving space).
 
 # Here is an example of filtering the data so that only those indicating a biological
-# sex as Male are in the newly filtered data - note that a quirk in this code is
-# that the "equals" operator requires two signs and that when you work with levels
-# of factor variables, they need to be presented in quotes and that it is case-sensitive.
+# sex as Male are in the newly filtered data - note that quirks in this code
+# include that the "equals" operator requires two signs, that when you work
+# with levels of factor variables, they need to be presented in quotes, and
+# that the variable names and category labels are case-sensitive.
 DescriptiveData %>% filter(Sex == "Male") %>% count()
 ```
 
-Use the code space below to try out the filter() function and the count() function 
-to filter the data so that only those younger than Age 40 are left in the data, 
-then try to filter the data so that only those indicating a biological sex 
-as Female are in the newly filtered data:
+Use the code space below to try out the `filter()` function and the `count()` 
+functionto filter the data so that only those younger than Age 40 are left in 
+the data, then try to filter the data so that only those indicating a biological 
+sex as Female are in the newly filtered data:
 ```{r filter_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -531,20 +534,20 @@ as Female are in the newly filtered data:
 
 ```{r mutate, exercise = TRUE, exercise.eval = FALSE}
 # Once again, we start with the dataframe object then use the pipe to indicate that 
-# we want to pass the data to the following function, but, with mutate() we need 
+# we want to pass the data to the following function, but, with "mutate()" we need 
 # to specify a name for our new variable and then a formula for how create the 
 # new variable.
 
 # The code below creates a new variable named "Age_Months" that is each participants' 
-# original Age value multiplied by 12, then the head() function is called so that
+# original Age value multiplied by 12, then the "head()" function is called so that
 # you can see that the new variable is appended to the dataframe.
 DescriptiveData %>% mutate(Age_Months = Age*12) %>% head()
 # You might have to use the arrow in the upper right of the output box to see
 # all the columns, including the new one all the way to the right.
 ```
 
-Use the code space below to try out the mutate() function and the head() function 
-to create a variable that is each participants' age in days:
+Use the code space below to try out the `mutate()` function and the `head()` 
+functionto create a variable that is each participants' age in days:
 ```{r mutate_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -555,15 +558,15 @@ to create a variable that is each participants' age in days:
 
 Creating frequency and crosstabs tables are perhaps two of the most basic and 
 fundamental tasks that analysts need to be able to do. The base R functions `table()`
-and `prop.table` are good tools for these tasks. The `table()` function will produce 
-frequency counts whereas the `proportions()` function will produce cell proportions.
+and `proportions()` are good tools for these tasks. The `table()` function will produce 
+frequency counts in each table cell whereas the `proportions()` function will produce cell proportions.
 
 ```{r tables1, exercise = TRUE, exercise.eval = FALSE}
-# Since table() is a base R function, we will not use the "pipe" as with 
+# Since "table()" is a base R function, we will not use the "pipe" as with 
 # functions that work within the tidyverse. Instead, we'll use the dataframe and
 # dollar sign approach to choose variables to analyze.
 
-# Here is a code to create a frequency table of the participants' preferred
+# Here is code to create a frequency table of the participants' preferred
 # rehearsal frequency.
 table(DescriptiveData$Preference.for.rehearsal.frequency)
 
@@ -574,15 +577,15 @@ Rehearse_table <- table(DescriptiveData$Preference.for.rehearsal.frequency)
 # The proportions function works with table objects.
 proportions(Rehearse_table)
 
-# If the number of decimal places is unwieldy, you can use the base R round()
+# If the number of decimal places is unwieldy, you can use the base R "round()"
 # function to specify how many places you'd like to see.
 round(proportions(Rehearse_table), 2)
 ```
 
 Here is an example of a cross-tabulation using the same base R functions.
-
 ```{r tables2, exercise = TRUE, exercise.eval = FALSE}
-# Here is a code to create a cross-tabulation table of the participants' preferred rehearsal frequency # according to biological sex.
+# Here is code to create a cross-tabulation table of the participants' preferred 
+# rehearsal frequency according to biological sex.
 table(DescriptiveData$Sex, DescriptiveData$Preference.for.rehearsal.frequency)
 
 Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.rehearsal.frequency)
@@ -590,9 +593,8 @@ Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.
 round(proportions(Bio_Rehearse_Table), 2)
 ```
 
-You could also request percentages by row by specifying an additional argument 
-within the `proportion()` function of "margin = 1" or by column with "margin = 2".
-
+You could also request percentages *by row* by specifying an additional argument 
+within the `proportion()` function of "margin = 1" or *by column* with "margin = 2".
 ```{r tables3, exercise = TRUE, exercise.eval = FALSE}
 Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.rehearsal.frequency)
 
@@ -606,16 +608,12 @@ make conducting common types of analyses convenient within a tidyverse ecosystem
 The `freq_table()` function can be used in a similar way as the base R `table()` function.
 The `freq_table()` function returns frequency counts and percentages (even though
 a column is printed that is labeled "prop").
-
 ```{r tables_rstatix1, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
 DescriptiveData %>% freq_table(Preference.for.rehearsal.frequency)
-
-DescriptiveData %>% freq_table(Sex, Preference.for.rehearsal.frequency)
 ```
 
 Here is an example of an **rstatix** cross-tabulation with the `freq_table()` function.
-
 ```{r tables_rstatix2, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
 DescriptiveData %>% freq_table(Sex, Preference.for.rehearsal.frequency)
@@ -623,21 +621,20 @@ DescriptiveData %>% freq_table(Sex, Preference.for.rehearsal.frequency)
 
 Examining descriptive statistics of quantitative variables is also a fundamental
 step that all analysts will need to take. Such variables can be summarized with the `get_summary_stats()` function from **rstatix**.
-
 ```{r summary_stat, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable.
 DescriptiveData %>% get_summary_stats(Age)
 
 # There are additional arguments you could specify if you would like less 
-# information. For example, adding "type = common" to the function would yield
-# fewer summary statistics.
+# information. For example, adding a "type = common" argument to the function 
+# would yield fewer summary statistics.
 DescriptiveData %>% get_summary_stats(Age, type = "common")
 ```
 
 ### *Summary Statistics by Sub-Group*
 
-It is also often necessary to summarize data according to sub-groups. The `group_by()`
-function from the **dplyr** package can be used for that type of task.
+It is also often necessary to summarize data according to sub-groups. The 
+`group_by()` function from the **dplyr** package can be used for that type of task.
 ```{r summary_stat_group, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable broken out by
 # participants' reported biological sex
@@ -648,14 +645,14 @@ DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 
 Examining bivariate correlations between variables is also a common analysis 
 task. As with all things in R, there are many, many ways to calculate correlation
-coefficients in R—and a variety of packages with correlation functions. The
+coefficients in R and a variety of packages with correlation functions. The
 **rstatix** package has several useful functions for calculating correlations.
 An additional element of flexibility in all of the rstatix correlation
 functions is the ability to specify among several common types of correlation:
 Pearson, Spearman, or Kendall.
 
 ```{r correlate, exercise = TRUE, exercise.eval = FALSE}
-# The cor_test() function is quite flexible and intuitive. This code returns
+# The "cor_test()" function is quite flexible and intuitive. This code returns
 # a Pearson correlation between Age and Years experience in a singing ensemble.
 DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
 
@@ -665,22 +662,21 @@ DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
 # of more than two variables.
 
 # It could also be helpful to be able to examine correlations according to
-# sub-groups. This code first filters the Sex variable so only those reporting
-# are considered in the analyses, then it will result in the Pearson correlation 
-# between Age and Years experience in a singing ensemble broken out by participants' 
-# reported biological sex.
+# sub-groups. This code first filters the Sex variable so only those who reported
+# their biological sex are considered in the analyses, then it will result in 
+# the Pearson correlation between Age and Years experience in a singing ensemble 
+# broken out by participants' reported biological sex.
 DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
   group_by(Sex) %>% cor_test(Age, Years.experience.in.singing.ensemble)
-
 ```
 
 ## Basic Data Visualization with ggplot2
 
 The graphic capabilities of R are amazing and your options for visualizing data
 are vast. In this section, we'll again use the `DescriptiveData` example dataframe
-to demonstrate how some of the most common types of graphs. We will continue working
-within the **tidyverse** ecosystem and use the extremely flexible package 
-**ggplot2**. 
+to demonstrate how to make some of the most common types of graphs. We will 
+continue working within the **tidyverse** ecosystem and use the extremely flexible 
+package **ggplot2**. 
 
 ### *ggplot2*
 
@@ -688,13 +684,15 @@ The "gg" in **ggplot2** refers to the "grammar of graphics," which is a referenc
 to a book by Leland Wilkinson. The primary developer of **tidyverse** packages and 
 functions, Hadley Wickham, also developed **ggplot2**. The most basic elements or 
 "layers" of a plot rendered with **ggplot2** include: (a) a dataframe, (b) 
-the designation of "aesthetics" (e.g., the mapping of variables to aesthetic features), 
-and (c) a "geom" (e.g., a shape for the plot such as histogram, boxplot, barchart, 
-scatterplot, and so on). From there, there are many options for building additional
-layers to the plot and a tremendous amount of flexibility in determining the 
-specific look of the features of the plot. When it comes to making beautiful plots, 
-there are too many good books and tutorials online that you can learn from. For our
-purposes here, we will just make basic (albeit ugly) plots.
+the designation of "aesthetics" (e.g., the mapping of variables to axes and 
+aesthetic features), and (c) a "geom" (e.g., a shape for the plot such as 
+histogram, boxplot, barchart, scatterplot, and so on). 
+
+From there, there are many options for building additional layers to the plot 
+and a tremendous amount of flexibility in determining the specific look of the 
+features of the plot. When it comes to making beautiful plots, there are too 
+many good books and tutorials online that you can learn from. For our purposes 
+here, we will just make basic (albeit ugly) plots.
 
 The most basic code for plot would look something like this:
 
