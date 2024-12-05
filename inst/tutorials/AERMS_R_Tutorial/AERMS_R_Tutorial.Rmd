@@ -972,6 +972,7 @@ ggplot(InferentialTestData, aes(x = mathtest1)) + geom_histogram()
 Here is code for the same histogram, but this time incorporating the features 
 described above. Note that you can continue adding layers to the plot code on a 
 new line if the previous line ends with a `+` sign.
+
 ```{r histogram_userDetail2, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(InferentialTestData, aes(x = mathtest1)) + 
   geom_histogram(color = "white", fill = "blue") +
@@ -982,6 +983,7 @@ ggplot(InferentialTestData, aes(x = mathtest1)) +
 ```
 
 Use this code space to customize your own histogram of math test scores.
+
 ```{r histogramDetail_user, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ```
 
@@ -989,14 +991,16 @@ Use this code space to customize your own histogram of math test scores.
 Here is code for a vertical boxplot depicting the distribution of the students' 
 1st grade standardized math test score variable from the `InferentialTestData` 
 data set.
+
 ```{r boxplot1Detail1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(InferentialTestData, aes(y = mathtest1)) + geom_boxplot()
 ```
 
 Here is code for the same boxplot, but this time incorporating the features 
-described above. We will add the traditional "whiskers" to this version with the
-additional argument of `staplewidth = ` within the `geom_boxplot()` function and
-eliminate the nuisance information on the x axis by specifying `breaks = NULL` in the `scale_x_continuous()` function.
+described above with customizations. We will add the traditional "whiskers" to 
+this version with the additional argument of `staplewidth = ` within the 
+`geom_boxplot()` function and eliminate the nuisance information on the x axis 
+by specifying `breaks = NULL` in the `scale_x_continuous()` function.
 
 ```{r boxplot1Detail2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(InferentialTestData, aes(y = mathtest1)) + 
@@ -1009,18 +1013,48 @@ ggplot(InferentialTestData, aes(y = mathtest1)) +
 ```
 
 Use this code space to customize your own boxplot of math test scores.
+
 ```{r boxplot_userDetail, exercise = TRUE, exercise.eval = FALSE}
 ```
 
 ### *Barplot*
 
+Here is code for a barplot depicting the students' urbanicity variable from the `InferentialTestData` data set. Note that the labels for each bar are taken 
+directly from the factor variable levels. You can change those by relabeling the
+levels of factor variable outside of the `ggplot()` function using the `labels = `
+argument in the `factor()` function.
+
 ```{r barchartDetail, exercise = TRUE, exercise.eval = FALSE}
-ggplot(InferentialTestData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
+ggplot(InferentialTestData, aes(x = urbanicity)) + geom_bar()
 ```
 
-```{r barchart_dodgeDetail, exercise = TRUE, exercise.eval = FALSE}
-ggplot(InferentialTestData, aes(x = Preference.for.rehearsal.frequency,
-                            fill = Sex)) + geom_bar(position = "dodge")
+Here is code for a dodged barplot depicting the frequency of students in each
+urbanicity category according to whether they are in school music or not. Note 
+that the title and labels for the legend that is produced are drawn from the name
+of the music factor variable and names of its levels. These can be adjusted by 
+renaming the variable and relabeling the factor levels.
+
+```{r barchart_crosstabDetail1, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(x = urbanicity, fill = music)) + 
+  geom_bar(position = "dodge")
+```
+
+Here is code for the same barplot with additional customizations. Note that with
+two variables, it is necessary to make changes in color with more specific code.
+
+```{r barchart_crosstabDetail2, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(x = urbanicity, fill = music)) + 
+  geom_bar(position = position_dodge(width = 1), width = .8) +
+  scale_fill_manual(values = c("red", "blue")) +
+  labs(x = "Urbanicity", y = "Frequency Count",
+       title = "Cross-tabulation of Urbanicity and School Music Participation",
+       subtitle = "This is an example of a sub-title.") +
+  theme_minimal()
+```
+
+Use this code space to customize your own dodged barplot.
+
+```{r barchart_crosstabDetail_user, exercise = TRUE, exercise.eval = FALSE}
 ```
 
 ### *Scatterplot*
