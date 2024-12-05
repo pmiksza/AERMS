@@ -641,7 +641,7 @@ It is also often necessary to summarize data according to sub-groups. The
 DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 ```
 
-### **Correlation**
+### *Correlation*
 
 Examining bivariate correlations between variables is also a common analysis 
 task. As with all things in R, there are many, many ways to calculate correlation
