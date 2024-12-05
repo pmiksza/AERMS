@@ -2,8 +2,10 @@
 title: "Arts Education Research Methods Summit: Intro to R"
 output: learnr::tutorial
 runtime: shiny_prerendered
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
-
 
 ```{r setup, include=FALSE}
 library(learnr)
@@ -22,91 +24,102 @@ options(tutorial.storage = list(
 
 ## Introduction
 
-This is a series of tutorial exercises to familiarize yourself with the basics of 
-using [R](https://www.r-project.org/) when working within the [R Studio environment](https://posit.co/download/rstudio-desktop/).
+This is a series of tutorial exercises to familiarize yourself with the
+basics of using [R](https://www.r-project.org/) when working within the
+[R Studio environment](https://posit.co/download/rstudio-desktop/).
 
-R is free, open-source software and a programming language that can be used for 
-data analysis, visualization, and more. One of the benefits of an open-source 
-software package is that anyone with the requisite programming skill can contribute
-to its development and it can continually adapt to emerging needs in the field. 
-Contributors to the open-source R project can create **packages** that, once 
-installed, will provide you with virtually any statistical analysis tool you could 
-ever need as an arts education researcher.
+R is free, open-source software and a programming language that can be
+used for data analysis, visualization, and more. One of the benefits of
+an open-source software package is that anyone with the requisite
+programming skill can contribute to its development and it can
+continually adapt to emerging needs in the field. Contributors to the
+open-source R project can create **packages** that, once installed, will
+provide you with virtually any statistical analysis tool you could ever
+need as an arts education researcher.
 
-The programming language can appear opaque at first, but a combination of (a) a 
-little knowledge, (b) practice, and (c) strategic "Googling" will eventually allow 
-you to use R for a wide variety of tasks fairly quickly.
+The programming language can appear opaque at first, but a combination
+of (a) a little knowledge, (b) practice, and (c) strategic "Googling"
+will eventually allow you to use R for a wide variety of tasks fairly
+quickly.
 
 ## Creating an R Project to Organize your Data Analysis Files
 
 ### *R Projects*
-The "learning curve" for working with R can at first be fairly steep. Getting 
-started in the R Studio environment, organizing and accessing files, and even 
-loading a data set for analysis can be tricky obstacles in and of themselves.
 
-Working with **R Projects** in R Studio will help smooth out some of the bumps 
-in the road. Starting an R Project will automatically group all of your files in 
-a single folder/directory and help you avoid problems finding files in R.
+The "learning curve" for working with R can at first be fairly steep.
+Getting started in the R Studio environment, organizing and accessing
+files, and even loading a data set for analysis can be tricky obstacles
+in and of themselves.
+
+Working with **R Projects** in R Studio will help smooth out some of the
+bumps in the road. Starting an R Project will automatically group all of
+your files in a single folder/directory and help you avoid problems
+finding files in R.
 
 Setting one up involves the following navigation:
 
-* File -> "New Project..."
-* Then choose to house your R Project in either a "New Directory" (i.e., a new 
-folder on your computer) or an "Existing Directory" (i.e., a folder that already 
-exists on your computer)
+-   File -\> "New Project..."
+-   Then choose to house your R Project in either a "New Directory"
+    (i.e., a new folder on your computer) or an "Existing Directory"
+    (i.e., a folder that already exists on your computer)
 
-Once you create your R Project directory, you will see that the lower right panel 
-of R Studio shows the directory address you created (or chose) and all of the 
-files in that directory. You should save any data files you need for your analyses 
-in the same directory. If you do, it will be easier to load your data and use it 
-later on.
+Once you create your R Project directory, you will see that the lower
+right panel of R Studio shows the directory address you created (or
+chose) and all of the files in that directory. You should save any data
+files you need for your analyses in the same directory. If you do, it
+will be easier to load your data and use it later on.
 
-If you don't work from an R Project, you will have to manage the directory 
-designations for your files manually ... and that can cause errors and frustration.
+If you don't work from an R Project, you will have to manage the
+directory designations for your files manually ... and that can cause
+errors and frustration.
 
 ### *R Script*
 
-An **R script** file is where you will create and save the code you write for 
-your projects. 
+An **R script** file is where you will create and save the code you
+write for your projects.
 
 Opening an R script file involves the following navigation:
 
-* File -> "New File" -> "R Script"  
+-   File -\> "New File" -\> "R Script"
 
-If you are working in an R Project when you create your R script file, the new 
-script file will automatically be organized (i.e., saved) with the rest of your 
-project files.
+If you are working in an R Project when you create your R script file,
+the new script file will automatically be organized (i.e., saved) with
+the rest of your project files.
 
 ## Basic Elements of the R Programming Language
 
 ### *Calculator Functions*
 
-R can be used as a calculator by entering numbers along with the typical operators:
+R can be used as a calculator by entering numbers along with the typical
+operators:
 
-* Addition: +
-* Subtraction: -
-* Multiplication: *
-* Division: /
-* Exponentiation: ^
-* You can also use parentheses () for complex operations
+-   Addition: +
+-   Subtraction: -
+-   Multiplication: \*
+-   Division: /
+-   Exponentiation: \^
+-   You can also use parentheses () for complex operations
 
-This is a convenient feature in R that will be useful should you need to transform 
-data or conduct manual computations.
+This is a convenient feature in R that will be useful should you need to
+transform data or conduct manual computations.
 
-Use the code space below to experiment with some calculator functions, click 
-"**Run Code**" in the upper right to see the output/results:
+Use the code space below to experiment with some calculator functions,
+click "**Run Code**" in the upper right to see the output/results:
 
 ```{r calculator, exercise = TRUE, exercise.eval = FALSE}
 
 ```
 
 ### *Commenting in Code*
-It's usually a good idea to make notes that you can refer to later on so that you 
-will know what your code is trying to accomplish at a later date. You can create 
-commented code by using the number sign symbol "**#**."
 
-Run the following code and notice how the "commented" bits are in a different 
-color as well as how only the non-commented bits are actually run by R.
+It's usually a good idea to make notes that you can refer to later on so
+that you will know what your code is trying to accomplish at a later
+date. You can create commented code by using the number sign symbol
+"**\#**."
+
+Run the following code and notice how the "commented" bits are in a
+different color as well as how only the non-commented bits are actually
+run by R.
 
 ```{r commenting, exercise = TRUE, exercise.eval = FALSE}
 # This is a comment - it will essentially be ignored by R
@@ -121,43 +134,46 @@ color as well as how only the non-commented bits are actually run by R.
 
 ### *Data Types*
 
-It is important to recognize the **type** of variable you are using when working 
-in R since it will have major implications for the sorts of analyses you can 
-conduct and whether you will be able to execute your code without errors.
+It is important to recognize the **type** of variable you are using when
+working in R since it will have major implications for the sorts of
+analyses you can conduct and whether you will be able to execute your
+code without errors.
 
 There are four levels of measurement commonly described in statistics:
 
-* Interval and Ratio (referred to as "scalar" in SPSS)
-* Ordinal
-* Nominal
+-   Interval and Ratio (referred to as "scalar" in SPSS)
+-   Ordinal
+-   Nominal
 
-R recognizes similar types of variables, but has slightly different distinctions 
-and uses different terminology:
+R recognizes similar types of variables, but has slightly different
+distinctions and uses different terminology:
 
-* Numeric - continuous quantitative values with values following decimal points 
-(10.5, 55.3, 787.0)
-* Integer - discrete quantiative values with no decimal values (1, 55, 100)
-* Factor - discrete categories with each category called a "level" (an analog to 
-a nominal variable) ("cat", "dog", "fish")
-* Ordered factor - discrete categories that are ordered (an analogy to an 
-ordinal variable) ("never", "sometimes", "always")
+-   Numeric - continuous quantitative values with values following
+    decimal points (10.5, 55.3, 787.0)
+-   Integer - discrete quantiative values with no decimal values (1, 55,
+    100)
+-   Factor - discrete categories with each category called a "level" (an
+    analog to a nominal variable) ("cat", "dog", "fish")
+-   Ordered factor - discrete categories that are ordered (an analogy to
+    an ordinal variable) ("never", "sometimes", "always")
 
 R also recognizes two additional variable types:
 
-* Character - letters with no additional information attached ("k", "R is 
-exciting", "FALSE", "11.5") (referred to as "string" in SPSS)
-* Logical - TRUE or FALSE Boolean values
+-   Character - letters with no additional information attached ("k", "R
+    is exciting", "FALSE", "11.5") (referred to as "string" in SPSS)
+-   Logical - TRUE or FALSE Boolean values
 
 ## Assigning "Objects" and "Storing" Information in the Global Environment
 
-R can store objects in its **global environment**, that is, it's memory. You can 
-see any objects currently in the global environment in the upper right panel of 
-R Studio under the tab titled "Environment." 
+R can store objects in its **global environment**, that is, it's memory.
+You can see any objects currently in the global environment in the upper
+right panel of R Studio under the tab titled "Environment."
 
-Storing objects is simply a matter of assigning information to a name and you can
-do that using a `<-` symbol. You can then call the name in R or perform operations
-with the object and the information will be displayed as appropriate. See the
-following examples in the code below:
+Storing objects is simply a matter of assigning information to a name
+and you can do that using a `<-` symbol. You can then call the name in R
+or perform operations with the object and the information will be
+displayed as appropriate. See the following examples in the code below:
+
 ```{r assign_variables, exercise = TRUE, exercise.eval = FALSE}
 # The lines showing the assignments of numbers to x and y will not result in any 
 # output. However, R will have stored the values under those designated assignments
@@ -178,22 +194,23 @@ z <- (x + y)
 z/2
 ```
 
-Many things are typically stored as objects when using R, including: variables, 
-data sets (and any modified data sets you create), outputs of analyses, and 
-custom built functions.
+Many things are typically stored as objects when using R, including:
+variables, data sets (and any modified data sets you create), outputs of
+analyses, and custom built functions.
 
 ### *Vectors*
 
-You can also assign a collection of values, i.e., a **vector** of values, to an 
-object using the **concatenate** function: `c()` and listing the values seperated
-by commas. The following code shows the storage of variables of different data 
-types, *numeric*, *integer*, and *character*. Note also that you will have to use
-parentheses when inputing character values.
+You can also assign a collection of values, i.e., a **vector** of
+values, to an object using the **concatenate** function: `c()` and
+listing the values seperated by commas. The following code shows the
+storage of variables of different data types, *numeric*, *integer*, and
+*character*. Note also that you will have to use parentheses when
+inputing character values.
 
-R will do a pretty good job at guessing what type of data the values 
-in each variable represent when the values are numbers. But, R will typically interpret
-any vectors that contain letters or words as character variables unless directed 
-otherwise. 
+R will do a pretty good job at guessing what type of data the values in
+each variable represent when the values are numbers. But, R will
+typically interpret any vectors that contain letters or words as
+character variables unless directed otherwise.
 
 ```{r assign_vectors, exercise = TRUE, exercise.eval = FALSE}
 # As with the code above, the lines showing the assignments of vectors to each 
@@ -210,9 +227,10 @@ integer_variable
 character_variable
 ```
 
-As with single value assignments to objects, R will also allow you to perform 
-operationswith stored vectors (or really any kind of data type). See the 
-following as an example:
+As with single value assignments to objects, R will also allow you to
+perform operationswith stored vectors (or really any kind of data type).
+See the following as an example:
+
 ```{r operate_vectors, exercise = TRUE, exercise.eval = FALSE}
 # First create the example variables.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -224,14 +242,17 @@ integer_variable/2
 ```
 
 ### *Dataframes*
-R can store and operate upon all sorts of data objects (values, integers, 
-matrices, and so on). An object that serves as the basis for many statistical 
-analyses is the **dataframe**. A dataframe is R's term for what most would simply 
-call a data set: an arrangement of data with variables as columns and entries as 
-rows.
 
-You can create dataframes by assembling vectors of the same length into a single
-object using the `data.frame()` function. An example of doing this is provided below. 
+R can store and operate upon all sorts of data objects (values,
+integers, matrices, and so on). An object that serves as the basis for
+many statistical analyses is the **dataframe**. A dataframe is R's term
+for what most would simply call a data set: an arrangement of data with
+variables as columns and entries as rows.
+
+You can create dataframes by assembling vectors of the same length into
+a single object using the `data.frame()` function. An example of doing
+this is provided below.
+
 ```{r assign_dataframe, exercise = TRUE, exercise.eval = FALSE}
 # First, we store the variables under designated assignments.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -247,9 +268,11 @@ my_data <- data.frame(numeric_variable, integer_variable, character_variable)
 my_data
 ```
 
-You can also examine a data frame using a variety of different *viewing* functions.
-See below how the usage of `head()`: returns the first six rows, `tail()`: returns
-the last six rows, and `str()`: displays the structure of the data.
+You can also examine a data frame using a variety of different *viewing*
+functions. See below how the usage of `head()`: returns the first six
+rows, `tail()`: returns the last six rows, and `str()`: displays the
+structure of the data.
+
 ```{r view_dataframe, exercise = TRUE, exercise.eval = FALSE}
 # First, we store the variables under designated assignments.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -266,9 +289,10 @@ tail(my_data)
 str(my_data)
 ```
 
-To view a single variable from a dataframe you will need to use an additional 
-symbol the `$` to specify to R that it should search in the particular dataframe 
-the variable is housed in.
+To view a single variable from a dataframe you will need to use an
+additional symbol the `$` to specify to R that it should search in the
+particular dataframe the variable is housed in.
+
 ```{r view_dataframe_select, exercise = TRUE, exercise.eval = FALSE}
 # Again, these first lines are just creating the dataframe for this example.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -281,19 +305,22 @@ my_data <- data.frame(numeric_variable, integer_variable, character_variable)
 my_data$numeric_variable
 ```
 
-You may have noticed earlier that when using the `str()` function the three 
-variables in the data frame were summarized as "num" (i.e., numeric) or "chr" 
-(i.e., character). R assumed that `integer_variable` was a numeric variable type 
-even though none of the values had decimal places. It is often necessary to 
-manually tell R what type of data each variable represents. For example, we can
-specify that `integer_variable` is an integer type variable with the `as.integer()`
-function and that the `character_variable` is a factor type variable with the 
-`as.factor()` function. We can replace the original variable in the dataframe 
-with the new one, now assigned to its specific type, by using an object assignment 
-approach. Alternatively, we could ask for R to create a new variable in the 
-dataframe to represent the newly specified variable while retaining the original. 
+You may have noticed earlier that when using the `str()` function the
+three variables in the data frame were summarized as "num" (i.e.,
+numeric) or "chr" (i.e., character). R assumed that `integer_variable`
+was a numeric variable type even though none of the values had decimal
+places. It is often necessary to manually tell R what type of data each
+variable represents. For example, we can specify that `integer_variable`
+is an integer type variable with the `as.integer()` function and that
+the `character_variable` is a factor type variable with the
+`as.factor()` function. We can replace the original variable in the
+dataframe with the new one, now assigned to its specific type, by using
+an object assignment approach. Alternatively, we could ask for R to
+create a new variable in the dataframe to represent the newly specified
+variable while retaining the original.
 
 For example:
+
 ```{r view_dataframe_specify, exercise = TRUE, exercise.eval = FALSE}
 # Again, these first lines are just creating the dataframe for this example.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -311,20 +338,26 @@ my_data$character_variable_now_factor <- as.factor(my_data$character_variable)
 # View the structure of the data again to see the newly specified variables.
 str(my_data)
 ```
+
 ## Base R Functions and Installing and Loading Packages
 
-R comes "preloaded" with many, many functions. That is what is referred to as 
-"base" R. However, you can easily expand the functionality of R by installing and 
-using extension packages made by developers within the open-source R community. For 
-beginner R users, this can be somewhat confusing since the combination of base 
-functions with the possibilities of functions from additional packages can offer 
-many ways for conducting any given procedure in R. Often, however, additional 
-packages can make procedures in R more user-friendly. All packages that are 
-available for installing using the typical methods within R are documented on the [R website](https://cran.r-project.org/).
+R comes "preloaded" with many, many functions. That is what is referred
+to as "base" R. However, you can easily expand the functionality of R by
+installing and using extension packages made by developers within the
+open-source R community. For beginner R users, this can be somewhat
+confusing since the combination of base functions with the possibilities
+of functions from additional packages can offer many ways for conducting
+any given procedure in R. Often, however, additional packages can make
+procedures in R more user-friendly. All packages that are available for
+installing using the typical methods within R are documented on the [R
+website](https://cran.r-project.org/).
 
-Here is an example of downloading a package and loading it for use in R. The [`rstatix`](https://cran.r-project.org/web/packages/rstatix/index.html) package 
-was designed by Alboukadel Kassambara to make some of the most common statistical 
-analyses that social scientists use simple to execute in R.
+Here is an example of downloading a package and loading it for use in R.
+The
+[`rstatix`](https://cran.r-project.org/web/packages/rstatix/index.html)
+package was designed by Alboukadel Kassambara to make some of the most
+common statistical analyses that social scientists use simple to execute
+in R.
 
 ```{r install_load_package, exercise = TRUE, exercise.eval = FALSE}
 # Using the base R "install.packages()" function will signal to R to find 
@@ -337,13 +370,15 @@ install.packages("rstatix")
 library(rstatix)
 ```
 
-As an example of the convenience and functionality that packages offer, consider 
-that it is possible to calculate descriptive statistics for a given variable in 
-R using base functions such as: `mean()`, `sd()`, `range()`, `min()`, `max()`, 
-`median()`, and so on. But, there are more convenient ways to get all of those 
-summary statistics and more with only one function from other packages. For 
-example, both the **rstatix** package and the `psych` package contain a single 
-function for returning all of those summary values.
+As an example of the convenience and functionality that packages offer,
+consider that it is possible to calculate descriptive statistics for a
+given variable in R using base functions such as: `mean()`, `sd()`,
+`range()`, `min()`, `max()`, `median()`, and so on. But, there are more
+convenient ways to get all of those summary statistics and more with
+only one function from other packages. For example, both the **rstatix**
+package and the `psych` package contain a single function for returning
+all of those summary values.
+
 ```{r base_rstatix, exercise = TRUE, exercise.eval = FALSE}
 # Again, these first lines are just creating the dataframe for this example.
 numeric_variable <- c(1.2, 3.7, 5, 2.2, 4.69, 6.123, 10.1, 4.3, 5.5, 6.09)
@@ -369,62 +404,73 @@ get_summary_stats(my_data, numeric_variable)
 
 ### *Tidyverse*
 
-The [**tidyverse**](https://www.tidyverse.org/) refers to a suite of 8 packages 
-created by a number of developers led by Hadley Wickham that are designed to make 
-various data science tasks more intuitive to do in R. This tutorial will 
-incorporate tidyverse-style coding because it can ease the learning curve when it
-comes to getting started in R. Some tidyverse packages we will use include 
-**ggplot2**: a graphing package, **dplyr**: a data manipulation package, and 
-**readr** as well as **haven**: packages for importing data. However, we will not
-have to install and load the packages separately as installing and loading 
+The [**tidyverse**](https://www.tidyverse.org/) refers to a suite of 8
+packages created by a number of developers led by Hadley Wickham that
+are designed to make various data science tasks more intuitive to do in
+R. This tutorial will incorporate tidyverse-style coding because it can
+ease the learning curve when it comes to getting started in R. Some
+tidyverse packages we will use include **ggplot2**: a graphing package,
+**dplyr**: a data manipulation package, and **readr** as well as
+**haven**: packages for importing data. However, we will not have to
+install and load the packages separately as installing and loading
 **tidyverse** will set you up with all of them at once.
 
-The **rstatix** package demonstrated above is designed to work seamlessly with 
-other packages in the tidyverse as well.
+The **rstatix** package demonstrated above is designed to work
+seamlessly with other packages in the tidyverse as well.
 
 ### *lavaan*
 
-The [**lavaan**](https://lavaan.ugent.be/) package was designed by Yves Rosseel 
-for anlaysis tasks such as path analysis, confirmatory factor analysis, structural 
-equation modeling, and growth curve models. We will use functions from the 
-**lavaan** package when conducting factor analyses.
+The [**lavaan**](https://lavaan.ugent.be/) package was designed by Yves
+Rosseel for anlaysis tasks such as path analysis, confirmatory factor
+analysis, structural equation modeling, and growth curve models. We will
+use functions from the **lavaan** package when conducting factor
+analyses.
 
 ## Importing and Viewing Various Types of Data Files
 
-Conducting data analyses in R requires loading your data set (i.e., as an object)
-into the R Global Environment. Unlike some programs such as SPSS or Excel, there 
-is not a direct data editor associated with R or R Studio. However, there are 
-packages with functions available for reading virtually any type of data file into R.
+Conducting data analyses in R requires loading your data set (i.e., as
+an object) into the R Global Environment. Unlike some programs such as
+SPSS or Excel, there is not a direct data editor associated with R or R
+Studio. However, there are packages with functions available for reading
+virtually any type of data file into R.
 
 Four common types of data files you are likely to encounter:
 
-* CSV Files (XXX.csv): "Comma-separated-value" data that can be created in a 
-variety of programs
-* Excel Files (XXX.xlsx): Files create in Excel
-* SPSS Files (XXX.sav): Data editor files created in SPSS (which can contain a 
-good deal of meta-data, e.g., variable names, value labels, and so on)
-* Stata Files (XXX.dta): Data files created in Stata (which can also contain m
-eta-data)
+-   CSV Files (XXX.csv): "Comma-separated-value" data that can be
+    created in a variety of programs
+-   Excel Files (XXX.xlsx): Files create in Excel
+-   SPSS Files (XXX.sav): Data editor files created in SPSS (which can
+    contain a good deal of meta-data, e.g., variable names, value
+    labels, and so on)
+-   Stata Files (XXX.dta): Data files created in Stata (which can also
+    contain m eta-data)
 
-The [**readr**](https://readr.tidyverse.org/) package includes a function for 
-importing csv files: `read_csv()`. The [**readxl**](https://readxl.tidyverse.org/) 
-package has a function for important Excel files: `read_xls()`. The [**haven**](https://haven.tidyverse.org/) package includes functions for importing 
-SPSS files: `read_sav()`, and Stata files: `read_dta()`. 
+The [**readr**](https://readr.tidyverse.org/) package includes a
+function for importing csv files: `read_csv()`. The
+[**readxl**](https://readxl.tidyverse.org/) package has a function for
+important Excel files: `read_xls()`. The
+[**haven**](https://haven.tidyverse.org/) package includes functions for
+importing SPSS files: `read_sav()`, and Stata files: `read_dta()`.
 
-As implied in the bullet list above, some types of data files can be more complex 
-than others. For example, "XXX.csv" files will tend to be very simple, whereas Excel 
-files can have multiple sheets and SPSS or Stata files can come with user-added 
-meta-data. As such, the various functions for reading in different types of data 
-files have many built in options for telling R how to interpret the file. We won't 
-deal with those here, suffice to say it's important to know what's in the file 
-you are reading into R and then checking that it came in the way you wanted it to.
+As implied in the bullet list above, some types of data files can be
+more complex than others. For example, "XXX.csv" files will tend to be
+very simple, whereas Excel files can have multiple sheets and SPSS or
+Stata files can come with user-added meta-data. As such, the various
+functions for reading in different types of data files have many built
+in options for telling R how to interpret the file. We won't deal with
+those here, suffice to say it's important to know what's in the file you
+are reading into R and then checking that it came in the way you wanted
+it to.
 
-The following code demonstrates using functions in the readr package to load each 
-of the data types described above. The data are files included as supplements 
-with the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
+The following code demonstrates using functions in the readr package to
+load each of the data types described above. The data are files included
+as a supplement to the Miksza & Elpus text, [*Design and Analysis for
+Quantitative Research in Music
+Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904)
+(the data is used in Chapter 4: Descriptive Analysis).
 
-Note that this code won't actually run, because importing external files into 
-this tutorial program is too hard for me to figure out how to do.
+Note that this code won't actually run, because importing external files
+into this tutorial program is too hard for me to figure out how to do.
 
 ```{r import_data, eval = FALSE}
 # First we will load the packages with the necessary importing functions
@@ -444,30 +490,39 @@ str(data_csv)
 
 ## Selecting, Filtering, and Altering Variables within Dataframes
 
-In this section, we'll begin to use functions from the **tidyverse** package to 
-demonstrate how to select variables for analysis, filter data according to specific 
-values of a variable, and how to create new variables. More specifically, we we 
-will use the `select()`, `filter()`, and `mutate()` functions from within the
-**dplyr** package. Given that these functions are from a package within the 
-tidyverse ecosystem, they each can be used with what is referred to as a 
-"*pipe operator*": `%>%`. The pipe operator allows you to write code that can be
-more intuitive to interpret than that written with some approaches in R base code.
+In this section, we'll begin to use functions from the **tidyverse**
+package to demonstrate how to select variables for analysis, filter data
+according to specific values of a variable, and how to create new
+variables. More specifically, we we will use the `select()`, `filter()`,
+and `mutate()` functions from within the **dplyr** package. Given that
+these functions are from a package within the tidyverse ecosystem, they
+each can be used with what is referred to as a "*pipe operator*": `%>%`.
+The pipe operator allows you to write code that can be more intuitive to
+interpret than that written with some approaches in R base code.
 
-For these exercises, we'll use a dataset I've provided with this tutorial package 
-called `DescriptiveData`. This dataset contains four variables meant to represent 
-characteristics of hypothetical singers in a choir: (a) age — a numeric variable 
-(i.e., ratio measure), (b) years of experience in singing ensembles - an 
-integer variable (i.e., ratio measure), (c) self-reported biological sex at birth 
-- a two-level factor variable (i.e., nominal measure), and (d) rating of their 
-preferred frequency of rehearsing - a five-level ordered factor variable 
-(i.e., ordinal measure). The first six rows of the data are shown below:
+For these exercises, we'll use a dataset I've provided with this
+tutorial package called `DescriptiveData`. This dataset contains four
+variables meant to represent characteristics of hypothetical singers in
+a choir: (a) age — a numeric variable (i.e., ratio measure), (b) years
+of experience in singing ensembles - an integer variable (i.e., ratio
+measure), (c) self-reported biological sex at birth - a two-level factor
+variable (i.e., nominal measure), and (d) rating of their preferred
+frequency of rehearsing - a five-level ordered factor variable (i.e.,
+ordinal measure). This particular dataset is included as a supplement to
+the Miksza & Elpus text, [*Design and Analysis for Quantitative Research
+in Music
+Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904),
+and is used to illustrate analyses in "Chapter 4: Descriptive Analysis."
+
+The first six rows of the data are shown below:
 
 ```{r show descriptive data, exercise = FALSE, exercise.eval = FALSE, echo = FALSE}
 head(DescriptiveData) %>% kable(align = "c")
 ```
 
-The following code chunks will demonstrate how to select, filter, and create 
-variables using these data. There is also space for you to try each function out yourself.
+The following code chunks will demonstrate how to select, filter, and
+create variables using these data. There is also space for you to try
+each function out yourself.
 
 ### *Selecting Variables*
 
@@ -483,9 +538,10 @@ variables using these data. There is also space for you to try each function out
 DescriptiveData %>% select(Age) %>% min()
 ```
 
-Use the code space below to try out the `select()` function and the `max()` 
-function to identify the largest number of years of experience in a singing 
-ensemble among the participants:
+Use the code space below to try out the `select()` function and the
+`max()` function to identify the largest number of years of experience
+in a singing ensemble among the participants:
+
 ```{r select_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -522,10 +578,11 @@ DescriptiveData_Filtered <- DescriptiveData %>% filter(Age >= 40)
 DescriptiveData %>% filter(Sex == "Male") %>% count()
 ```
 
-Use the code space below to try out the `filter()` function and the `count()` 
-functionto filter the data so that only those younger than Age 40 are left in 
-the data, then try to filter the data so that only those indicating a biological 
-sex as Female are in the newly filtered data:
+Use the code space below to try out the `filter()` function and the
+`count()` functionto filter the data so that only those younger than Age
+40 are left in the data, then try to filter the data so that only those
+indicating a biological sex as Female are in the newly filtered data:
+
 ```{r filter_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -546,8 +603,10 @@ DescriptiveData %>% mutate(Age_Months = Age*12) %>% head()
 # all the columns, including the new one all the way to the right.
 ```
 
-Use the code space below to try out the `mutate()` function and the `head()` 
-functionto create a variable that is each participants' age in days:
+Use the code space below to try out the `mutate()` function and the
+`head()` function to create a variable that is each participants' age in
+days:
+
 ```{r mutate_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
@@ -556,10 +615,12 @@ functionto create a variable that is each participants' age in days:
 
 ### *Summary Statistics*
 
-Creating frequency and crosstabs tables are perhaps two of the most basic and 
-fundamental tasks that analysts need to be able to do. The base R functions `table()`
-and `proportions()` are good tools for these tasks. The `table()` function will produce 
-frequency counts in each table cell whereas the `proportions()` function will produce cell proportions.
+Creating frequency and crosstabs tables are perhaps two of the most
+basic and fundamental tasks that analysts need to be able to do. The
+base R functions `table()` and `proportions()` are good tools for these
+tasks. The `table()` function will produce frequency counts in each
+table cell whereas the `proportions()` function will produce cell
+proportions.
 
 ```{r tables1, exercise = TRUE, exercise.eval = FALSE}
 # Since "table()" is a base R function, we will not use the "pipe" as with 
@@ -582,7 +643,9 @@ proportions(Rehearse_table)
 round(proportions(Rehearse_table), 2)
 ```
 
-Here is an example of a cross-tabulation using the same base R functions.
+Here is an example of a cross-tabulation using the same base R
+functions.
+
 ```{r tables2, exercise = TRUE, exercise.eval = FALSE}
 # Here is code to create a cross-tabulation table of the participants' preferred 
 # rehearsal frequency according to biological sex.
@@ -593,8 +656,10 @@ Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.
 round(proportions(Bio_Rehearse_Table), 2)
 ```
 
-You could also request percentages *by row* by specifying an additional argument 
-within the `proportion()` function of "margin = 1" or *by column* with "margin = 2".
+You could also request percentages *by row* by specifying an additional
+argument within the `proportion()` function of "margin = 1" or *by
+column* with "margin = 2".
+
 ```{r tables3, exercise = TRUE, exercise.eval = FALSE}
 Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.rehearsal.frequency)
 
@@ -603,24 +668,30 @@ round(proportions(Bio_Rehearse_Table, margin = 1), 2)
 round(proportions(Bio_Rehearse_Table, margin = 2), 2)
 ```
 
-As mentioned on earlier pages, the **rstatix** package provides many functions that
-make conducting common types of analyses convenient within a tidyverse ecosystem.
-The `freq_table()` function can be used in a similar way as the base R `table()` function.
-The `freq_table()` function returns frequency counts and percentages (even though
-a column is printed that is labeled "prop").
+As mentioned on earlier pages, the **rstatix** package provides many
+functions that make conducting common types of analyses convenient
+within a tidyverse ecosystem. The `freq_table()` function can be used in
+a similar way as the base R `table()` function. The `freq_table()`
+function returns frequency counts and percentages (even though a column
+is printed that is labeled "prop").
+
 ```{r tables_rstatix1, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
 DescriptiveData %>% freq_table(Preference.for.rehearsal.frequency)
 ```
 
-Here is an example of an **rstatix** cross-tabulation with the `freq_table()` function.
+Here is an example of an **rstatix** cross-tabulation with the
+`freq_table()` function.
+
 ```{r tables_rstatix2, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
 DescriptiveData %>% freq_table(Sex, Preference.for.rehearsal.frequency)
 ```
 
-Examining descriptive statistics of quantitative variables is also a fundamental
-step that all analysts will need to take. Such variables can be summarized with the `get_summary_stats()` function from **rstatix**.
+Examining descriptive statistics of quantitative variables is also a
+fundamental step that all analysts will need to take. Such variables can
+be summarized with the `get_summary_stats()` function from **rstatix**.
+
 ```{r summary_stat, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable.
 DescriptiveData %>% get_summary_stats(Age)
@@ -633,8 +704,10 @@ DescriptiveData %>% get_summary_stats(Age, type = "common")
 
 ### *Summary Statistics by Sub-Group*
 
-It is also often necessary to summarize data according to sub-groups. The 
-`group_by()` function from the **dplyr** package can be used for that type of task.
+It is also often necessary to summarize data according to sub-groups.
+The `group_by()` function from the **dplyr** package can be used for
+that type of task.
+
 ```{r summary_stat_group, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable broken out by
 # participants' reported biological sex
@@ -643,13 +716,14 @@ DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 
 ### *Correlation*
 
-Examining bivariate correlations between variables is also a common analysis 
-task. As with all things in R, there are many, many ways to calculate correlation
-coefficients in R and a variety of packages with correlation functions. The
-**rstatix** package has several useful functions for calculating correlations.
-An additional element of flexibility in all of the rstatix correlation
-functions is the ability to specify among several common types of correlation:
-Pearson, Spearman, or Kendall.
+Examining bivariate correlations between variables is also a common
+analysis task. As with all things in R, there are many, many ways to
+calculate correlation coefficients in R and a variety of packages with
+correlation functions. The **rstatix** package has several useful
+functions for calculating correlations. An additional element of
+flexibility in all of the rstatix correlation functions is the ability
+to specify among several common types of correlation: Pearson, Spearman,
+or Kendall.
 
 ```{r correlate, exercise = TRUE, exercise.eval = FALSE}
 # The "cor_test()" function is quite flexible and intuitive. This code returns
@@ -672,88 +746,108 @@ DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
 
 ## Basic Data Visualization with ggplot2
 
-The graphic capabilities of R are amazing and your options for visualizing data
-are vast. In this section, we'll again use the `DescriptiveData` example dataframe
-to demonstrate how to make some of the most common types of graphs. We will 
-continue working within the **tidyverse** ecosystem and use the extremely flexible 
-package **ggplot2**. 
+The graphic capabilities of R are amazing and your options for
+visualizing data are vast. In this section, we'll again use the
+`DescriptiveData` example dataframe to demonstrate how to make some of
+the most common types of graphs. We will continue working within the
+**tidyverse** ecosystem and use the extremely flexible package
+**ggplot2**.
 
 ### *ggplot2*
 
-The "gg" in **ggplot2** refers to the "grammar of graphics," which is a reference
-to a book by Leland Wilkinson. The primary developer of **tidyverse** packages and 
-functions, Hadley Wickham, also developed **ggplot2**. The most basic elements or 
-"layers" of a plot rendered with **ggplot2** include: (a) a dataframe, (b) 
-the designation of "aesthetics" (e.g., the mapping of variables to axes and 
-aesthetic features), and (c) a "geom" (e.g., a shape for the plot such as 
-histogram, boxplot, barchart, scatterplot, and so on). 
+The "gg" in **ggplot2** refers to the "grammar of graphics," which is a
+reference to a book by Leland Wilkinson. The primary developer of
+**tidyverse** packages and functions, Hadley Wickham, also developed
+**ggplot2**. The most basic elements or "layers" of a plot rendered with
+**ggplot2** include: (a) a dataframe, (b) the designation of
+"aesthetics" (e.g., the mapping of variables to axes and aesthetic
+features), and (c) a "geom" (e.g., a shape for the plot such as
+histogram, boxplot, barchart, scatterplot, and so on).
 
-From there, there are many options for building additional layers to the plot 
-and a tremendous amount of flexibility in determining the specific look of the 
-features of the plot. When it comes to making beautiful plots, there are too 
-many good books and tutorials online that you can learn from. For our purposes 
-here, we will just make basic (albeit ugly) plots.
+From there, there are many options for building additional layers to the
+plot and a tremendous amount of flexibility in determining the specific
+look of the features of the plot. When it comes to making beautiful
+plots, there are too many good books and tutorials online that you can
+learn from. For our purposes in this section, we will just make basic
+(albeit ugly) plots. Several basic options for customizing plots will be
+demonstrated in the next section.
 
 The most basic code for plot would look something like this:
 
-* First call the function `ggplot()` and specify the data source:
-  + `ggplot(data = your_data)`
-* Next, specify which variables from the dataframe are assigned to which axes using the
-`aes()` function inside of the `ggplot()` function:
-  + `ggplot(data = your_data, aes(x = variable_1))`
-  + (There are many more aesthetic possibilities beyond designating axes)
-* Next, choose a "geom" to indicate what type of plot you are aiming to make by adding
-one of the possible options with a plus sign (`+`) after the `ggplot()` function:
-  +`ggplot(data = your_data, aes(x = variable_1)) + geom_histogram()`
+-   First call the function `ggplot()` and specify the data source:
+    -   `ggplot(data = your_data)`
+-   Next, specify which variables from the dataframe are assigned to
+    which axes using the `aes()` function inside of the `ggplot()`
+    function:
+    -   `ggplot(data = your_data, aes(x = variable_1))`
+    -   (There are many more aesthetic possibilities beyond designating
+        axes)
+-   Next, choose a "geom" to indicate what type of plot you are aiming
+    to make by adding one of the possible options with a plus sign (`+`)
+    after the `ggplot()` function:
+    +`ggplot(data = your_data, aes(x = variable_1)) + geom_histogram()`
 
 ### *Histogram*
 
-Creating a histograms is critical for examining the distribution of a quantitative
-variable. Here is an example of code for creating a histogram of the Age variable
-from the example `DescriptiveData` dataset that follows the generic form described above.
+Creating a histograms is critical for examining the distribution of a
+quantitative variable. Here is an example of code for creating a
+histogram of the Age variable from the example `DescriptiveData` dataset
+that follows the generic form described above.
+
 ```{r histogram, exercise = TRUE, exercise.eval = FALSE}
 # Note that the "data =" part of the code was removed since the ggplot() function
 # will assume the first argument is the name of the dataframe.
 ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
 ```
 
-Use the code space below to try and code a histogram for the Years experience in a
-singing ensemble variable:
+Use the code space below to try and code a histogram for the Years
+experience in a singing ensemble variable:
+
 ```{r histogram_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
 
 ### *Boxplot*
 
-Creating a boxplot instead is simply a matter of choosing a different geom. Here 
-is an example of code for creating a boxplot of the Age variable.
+Creating a boxplot instead is simply a matter of choosing a different
+geom. Here is an example of code for creating a boxplot of the Age
+variable. Note that the values on the y axis are not informative and refer to the width of the box. You'll see how to remove them in the next section of this tutorial.
+
+
 ```{r boxplot1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age)) + geom_boxplot()
 ```
 
-You could make it a more typical looking vertical-oriented boxplot by assiging the
-Age variable to y instead of x.
+You could make it a more typical looking vertical-oriented boxplot by
+assiging the Age variable to y instead of x.
+
 ```{r boxplot2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(y = Age)) + geom_boxplot()
 ```
 
-Use the code space below to try and code a boxplot for the Years experience in a 
-singing ensemble variable:
+Use the code space below to try and code a boxplot for the Years
+experience in a singing ensemble variable:
+
 ```{r boxplot_user, exercise = TRUE, exercise.eval = FALSE}
 
 ```
 
-### *Bar Chart*
+### *Barplot*
 
-Creating bar charts for nominal (i.e., factor in R) or ordinal variables 
-(i.e., ordered factor in R) can be done with very similar code. 
+Creating barplots for nominal (i.e., factor in R) or ordinal variables
+(i.e., ordered factor in R) can be done with very similar code.
+
 ```{r barchart, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
 ```
 
-Creating "stacked" or "dodged" bar charts for two nominal (i.e., factor in R) or ordinal variables 
-(i.e., ordered factor in R) would require assigning a second variable to `fill = variable_2` in the `aes()` function and then specifying an additional argument of `position = "stack"` or 
-`position = "dodge"` within the `geom_bar()` function.
+Creating "stacked" or "dodged" barplots for two nominal (i.e., factor in
+R) or ordinal variables (i.e., ordered factor in R) would require
+assigning a second variable to `fill = variable_2` in the `aes()`
+function and then specifying an additional argument of
+`position = "stack"` or `position = "dodge"` within the `geom_bar()`
+function.
+
 ```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
                             fill = Sex)) + geom_bar(position = "dodge")
@@ -763,20 +857,176 @@ ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
 
 ### *Scatterplot*
 
-Creating scatterplots to depict the relationship between two quantitative variables
-will feel similarly intuitive once you get the hang of the grammar of graphics approach.
-Here is a scatterplot of the Age and Years experience in a singing ensemble variables.
+Creating scatterplots to depict the relationship between two
+quantitative variables will feel similarly intuitive once you get the
+hang of the grammar of graphics approach. Here is a scatterplot of the
+Age and Years experience in a singing ensemble variables.
+
 ```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + geom_point()
 ```
 
-Adding a layer consisting of a line of best fit and the associated standard error
-can be done by adding another layer with `geom_smooth()` along with an argument 
-specifying a linear model: `method = "lm". (Clearly this is a very weak/non-existent 
-correlation!)
+Adding a layer consisting of a line of best fit and the associated
+standard error can be done by adding another layer with `geom_smooth()`
+along with an argument specifying a linear model: \`method = "lm".
+(Clearly this is a very weak/non-existent correlation!)
+
 ```{r scatterplot2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
+                            y = Years.experience.in.singing.ensemble)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+## A Bit Less Basic Data Visualization with ggplot
+
+In this section, a few of the additional options for customizing plots
+in ggplot2 will be demonstrated. We will use a different dataset that is
+built into this package for these demonstrations since it is larger and can 
+allow for few more options. It is titled `InferentialTestData`, 
+
+This dataset contains nine variables representing characteristics and
+measurements of school children: (a) kindergarten students'
+standardized math test scores — a numeric variable (i.e., interval
+measure), (b) those same students' 1st grade standardized math test
+scores — a numeric variable (i.e., interval measure), (c) the urbanicity
+of the students' school (i.e., city, suburb, town, rural) - a factor variable 
+(i.e., nominal measure), (d) whether they participated in school music class 
+(i.e., No Music, Yes Music) - a factor variables (i.e., a nominal variable), and
+(e) a set of "dummy" variables that indicate "Yes" or "No" for each urbanicity 
+category - factor variables. This particular dataset is included as a supplement 
+to the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music
+Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904), and is used to illustrate analyses in "Chapter 10: Regression."
+
+The first six rows of the data are shown below:
+
+```{r show inferentialTest data, exercise = FALSE, exercise.eval = FALSE, echo = FALSE}
+head(InferentialTestData) %>% kable(align = "c")
+```
+
+### *Additional Common Plot Customization*
+
+First, we will consider methods for enacting several very common desirable 
+alterations to default plots generated by *ggplot2*. Then, we will create some plots incorporating these methods. Please be aware that these tips barely scratch the
+surface of the customizations available in the *ggplot2* package. Fortunately, 
+there are many, many terrific online resources for making virtually any sort of
+alteration you'd like.
+
+#### *Additional Aesthetic Mappings*
+All primary elements of a plot can be customized according to how you would like
+them to appear. For example, within the `aes()` function it is possible to specify
+outline and fill colors, point size, point shape, line thickness, linetype, 
+degree of transparency, geom dimensions, and so on. Various aesthetic mappings will be demonstrated in the sample code presented below.
+
+#### *Axis Labels*
+
+By default, *ggplot* will use variable names as axis label and will not include
+any additional title or sub-title information. Adding custom labels and titles can
+be done by adding an additional function to the plot code of `+` `labs()` and
+specifying labels in quotes for elements of the plot such as: 'x = ', 'y = ', 
+`title = `, `subtitle = `, or `caption = `.
+
+#### *Adjusting Axis Ranges and Ticks*
+
+Sometimes when plotting quantitative variables, the default plot will produce 
+axes and indicators or "ticks" of values that make it challenging to interpret 
+the range of values in a plot. You can customize x and y axes in *ggplot* by adding additional functions such `+` `scale_x_continuous()` and `+` `scale_x_continuous()`. 
+Then specifying the range of values to be included by inserting the function `limits =`
+into the parentheses of the previous functions, followed by a vector of two values representing the desired minimum and maximum, such as, `+` 
+`scale_x_continuous(limits = c(1, 100))` - that would create an x axis bound by
+1 and 100.
+
+If, say, you'd like to customize the axis ticks that are shown between the axis 
+minimum and maximum values, then you could also insert the function `breaks = ` into the parentheses of the `scale_x_continuous()` function, followed by a vector of values
+specifying each tick point. For example, the following code would produce an x axis
+with a range of 1 to 100 and ticks at every multiple of 10: 
+`scale_x_continuous(limits = c(1, 100), breaks = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100))`.
+
+There are also similar methods available for customizing axes representing all 
+sorts of variable types, not just quantitative variables.
+
+#### *Theme Elements*
+
+The general "look" of a plot can be controlled with a number of functions that 
+can be inserted within a `+` `theme()` layer. Take a look at the online 
+documentation of the various elements that can be adjusted within a theme layer 
+[Theme Element Options](https://ggplot2.tidyverse.org/reference/theme.html). 
+The options are certainly numerous enough that they can be overwhelming when getting started. 
+
+However, *ggplot2* also has several complete themes that you could use which 
+convert many elements of a plot to a particular style. You can see some of the 
+options for complete themes at the *tidyverse* website as well: [Complete Theme Options](https://ggplot2.tidyverse.org/reference/ggtheme.html). The name of the
+the complete theme is typically appended to the `theme()` function. For example, 
+to use what is referred to as a minimalist style in *ggplot2*  you could add a 
+layer that looks something like: `+` `theme_minimal()`.
+
+### *Histogram*
+
+Here is code for a histogram depicting the distribution of the students' 1st grade standardized math test score variable from the `InferentialTestData` data set.
+
+```{r histogramDetail1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+ggplot(InferentialTestData, aes(x = mathtest1)) + geom_histogram()
+```
+
+Here is code for the same histogram, but this time incorporating the features 
+described above. Note that you can continue adding layers to the plot code on a 
+new line if the previous line ends with a `+` sign.
+```{r histogram_userDetail2, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+ggplot(InferentialTestData, aes(x = mathtest1)) + 
+  geom_histogram(color = "white", fill = "blue") +
+  labs(title = "Distribution of 1st Grade Students' Standardized Math Test Scores",
+       x = "Math Test Score", y = "Frequency") +
+  scale_y_continuous(limits = c(0, 100), breaks = c(20, 40, 60, 80, 100)) +
+  theme_minimal()
+```
+
+Use this code space to customize your own histogram of math test scores.
+```{r histogramDetail_user, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+```
+
+### *Boxplot*
+Here is code for a vertical boxplot depicting the distribution of the students' 
+1st grade standardized math test score variable from the `InferentialTestData` 
+data set.
+```{r boxplot1Detail1, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(y = mathtest1)) + geom_boxplot()
+```
+
+Here is code for the same boxplot, but this time incorporating the features 
+described above. We will add the traditional "whiskers" to this version with the
+additional argument of `staplewidth = ` within the `geom_boxplot()` function and
+eliminate the nuisance information on the x axis by specifying `breaks = NULL` in the `scale_x_continuous()` function.
+
+```{r boxplot1Detail2, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(y = mathtest1)) + 
+  geom_boxplot(fill = "lightblue", staplewidth = .25) +
+  labs(title = "Distribution of 1st Grade Students' Standardized Math Test Scores",
+       y = "Math Test Score") +
+  scale_x_continuous(breaks = NULL) +
+  scale_y_continuous(limits = c(0, 100), breaks = c(0, 15, 30, 45, 60, 75, 90)) +
+  theme_classic()
+```
+
+Use this code space to customize your own boxplot of math test scores.
+```{r boxplot_userDetail, exercise = TRUE, exercise.eval = FALSE}
+```
+
+### *Barplot*
+
+```{r barchartDetail, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
+```
+
+```{r barchart_dodgeDetail, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(x = Preference.for.rehearsal.frequency,
+                            fill = Sex)) + geom_bar(position = "dodge")
+```
+
+### *Scatterplot*
+
+```{r scatterplot1Detail, exercise = TRUE, exercise.eval = FALSE}
+ggplot(InferentialTestData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + 
   geom_point() +
   geom_smooth(method = "lm")
