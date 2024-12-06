@@ -339,10 +339,22 @@ my_data$character_variable_now_factor <- as.factor(my_data$character_variable)
 str(my_data)
 ```
 
-## Base R Functions and Installing and Loading Packages
+## R Functions and Installing and Loading Packages
+
+### *Functions and Arguments*
 
 R comes "preloaded" with many, many functions. That is what is referred
-to as "base" R. However, you can easily expand the functionality of R by
+to as "base" R. 
+
+A function is...
+
+Each function has arguments...
+
+You can learn about functions by reading documentation on Cran or the developers website... or by using ?
+
+### *Packages*
+
+You can easily expand the functionality of R by
 installing and using extension packages made by developers within the
 open-source R community. For beginner R users, this can be somewhat
 confusing since the combination of base functions with the possibilities
@@ -587,7 +599,7 @@ indicating a biological sex as Female are in the newly filtered data:
 
 ```
 
-### *Creating New Variables with mutate()*
+### *Creating New Variables with* `mutate()`
 
 ```{r mutate, exercise = TRUE, exercise.eval = FALSE}
 # Once again, we start with the dataframe object then use the pipe to indicate that 
@@ -794,7 +806,7 @@ quantitative variable. Here is an example of code for creating a
 histogram of the Age variable from the example `DescriptiveData` dataset
 that follows the generic form described above.
 
-```{r histogram, exercise = TRUE, exercise.eval = FALSE}
+```{r histogram, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # Note that the "data =" part of the code was removed since the ggplot() function
 # will assume the first argument is the name of the dataframe.
 ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
@@ -803,7 +815,7 @@ ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
 Use the code space below to try and code a histogram for the Years
 experience in a singing ensemble variable:
 
-```{r histogram_user, exercise = TRUE, exercise.eval = FALSE}
+```{r histogram_user, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 
 ```
 
@@ -848,7 +860,7 @@ function and then specifying an additional argument of
 `position = "stack"` or `position = "dodge"` within the `geom_bar()`
 function.
 
-```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE}
+```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE, message =FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
                             fill = Sex)) + geom_bar(position = "dodge")
 # Note that this plot is particularly odd since there are "empty cells" for 
@@ -862,7 +874,7 @@ quantitative variables will feel similarly intuitive once you get the
 hang of the grammar of graphics approach. Here is a scatterplot of the
 Age and Years experience in a singing ensemble variables.
 
-```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE}
+```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + geom_point()
 ```
@@ -872,7 +884,7 @@ standard error can be done by adding another layer with `geom_smooth()`
 along with an argument specifying a linear model: \`method = "lm".
 (Clearly this is a very weak/non-existent correlation!)
 
-```{r scatterplot2, exercise = TRUE, exercise.eval = FALSE}
+```{r scatterplot2, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
                             y = Years.experience.in.singing.ensemble)) + 
   geom_point() +
@@ -1062,7 +1074,7 @@ Use this code space to customize your own dodged barplot.
 Here is code for a scatterplot depicting the relationship between the students'
 kindergarten and 1st grade standardized math test scores.
 
-```{r scatterplot1Detail, exercise = TRUE, exercise.eval = FALSE}
+```{r scatterplot1Detail1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(InferentialTestData, aes(x = mathtestk, y = mathtest1)) + 
   geom_point()
 ```
@@ -1074,7 +1086,7 @@ same general area) is a bit easier to see. Also, since this is the final example
 it demonstrates including a variety of specific theme specifications rather than
 a complete theme.
 
-```{r scatterplot1Detail, exercise = TRUE, exercise.eval = FALSE}
+```{r scatterplot1Detail2, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(InferentialTestData, aes(x = mathtestk, y = mathtest1)) + 
   geom_point(color = "blue", alpha = .35) +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
@@ -1092,6 +1104,12 @@ ggplot(InferentialTestData, aes(x = mathtestk, y = mathtest1)) +
         panel.grid.major = element_line(color = "grey"),
         panel.background = element_rect(fill = NA),
         axis.ticks = element_blank())
+```
+
+Use this code space to customize your own scatterplot.
+
+```{r scatterplotDetail_user, exercise = TRUE, exercise.eval = FALSE}
+
 ```
 
 ## Basic Inferential Analyses
