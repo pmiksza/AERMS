@@ -1132,7 +1132,7 @@ Use this code space to customize your own scatterplot.
 
 ## Basic Inferential Analyses and Formula Notation
 
-We will continue to use the `InferentialTestData` dataset described in the previous section for the examples in this section. To keep things relatively simple, we will also restrict our analyses to the use of the base R linear model (i.e., `lm()`) function and other functions available in the **rstatix** package described earlier. In addition, all of the functions that will be demonstrated in remaining sections can take a formula as an argument for specifying the test you would like to conduct. As such, we'll begin with a quick introduction to formula notation.
+We will continue to use the `InferentialTestData` dataset described in the previous section for the examples in this section. To keep things relatively simple, we will also restrict our analyses to the use of the base R linear model (i.e., `lm()`) function and other functions available in the **rstatix** package described earlier. In addition, all of the functions that will be demonstrated in the remaining sections can take a formula as the argument for specifying the test you would like to conduct. As such, we'll begin with a quick introduction to formula notation.
 
 ### *Using Formula Notation*
 
@@ -1150,11 +1150,9 @@ The interaction effect could be added like this:
 
 ### *A Quick Note About Options Available in R*
 
-It's worth taking a moment to mention that in addition to base R functions, there are many packages that have functions for doing the relatively simple analyses presented below. This note is a reminder that all of the test functions shown here are from the **rstatix** package.
+It's worth taking a moment to mention that in addition to base R functions, there are many packages that have functions for doing the relatively simple analyses presented in the sections below. This note is a reminder that all of the test functions shown here are from the **rstatix** package.
 
 Also recall that the **rstatix** package is designed to work well with the **tidyverse** suite of packages. As such, we will make frequent use of the pipe operator, `%>%` to pass the `InferentialTestData` dataframe to various tests functions.
-
-
 
 ## Linear Regression Models
 
