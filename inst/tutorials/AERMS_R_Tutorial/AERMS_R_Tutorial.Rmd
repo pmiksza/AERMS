@@ -13,6 +13,7 @@ library(AERMS)
 library(tidyverse)
 library(knitr)
 library(rstatix)
+library(QuantPsych)
 knitr::opts_chunk$set(echo = TRUE)
 options(tutorial.storage = list(
   save_object = function(...) { },
@@ -1129,22 +1130,176 @@ Use this code space to customize your own scatterplot.
 
 ```
 
-## Basic Inferential Analyses
+## Basic Inferential Analyses and Formula Notation
+
+We will continue to use the `InferentialTestData` dataset described in the previous section for the examples in this section. To keep things relatively simple, we will also restrict our analyses to the use of the base R linear model (i.e., `lm()`) function and other functions available in the **rstatix** package described earlier. In addition, all of the functions that will be demonstrated in remaining sections can take a formula as an argument for specifying the test you would like to conduct. As such, we'll begin with a quick introduction to formula notation.
 
 ### *Using Formula Notation*
 
-### *Comparing Two Independent Samples*
+For the analyses below, the formula notation will involve specifying an dependent variable (i.e., an outcome, `y`) and independent variables (i.e., predictors, `x`). The tilde, `~`, symbol is used to separate the dependent from the independent variables. Therefore, a basic analysis of the influence of one independent variabl on one dependent variable would look like this:
 
-### *Effect Size for Comparing Two Independent Samples*
+|   `y ~ x`
+\
+For analyses with more than one independent variable, a plus sign, `+`, can be used to extend the formula. If interaction effects are desired between independent variables, then a colon, `:`, could be used between them. Therefore, an analysis involving two independent variables (or an independent variable and a covariate, etc.) could look like this:
 
-### *Comparing More than Two Independent Samples*
+|   `y ~ x1 + x2`
+\
+The interaction effect could be added like this:
 
-### *Effect Size for Comparing More than Two Independent Samples*
+|   `y ~ x1 + x2 + x1:x2`
 
-### *Post-Hoc Tests*
+### *A Quick Note About Options Available in R*
 
-### *Dependent Smaples and Mixed Designs*
+It's worth taking a moment to mention that in addition to base R functions, there are many packages that have functions for doing the relatively simple analyses presented below. This note is a reminder that all of the test functions shown here are from the **rstatix** package.
+
+Also recall that the **rstatix** package is designed to work well with the **tidyverse** suite of packages. As such, we will make frequent use of the pipe operator, `%>%` to pass the `InferentialTestData` dataframe to various tests functions.
+
+
 
 ## Linear Regression Models
 
+Many of the statistical tests arts education researchers wish to use can be executed with some version or generalized form of the **general linear model**. For example, correlation, t-tests, ANOVAs, and regression analyses can all be interpreted as an instantiation of the general linear model. For example, all of the objectives of the statistical tests mentioned in the previous sentence can be achieved with the single base R function `lm()`, which is for fitting linear models.
+
+The `lm()` function is quite simple to use. It involves specifying an argument that is a formula with variable names to indicate dependent and independent variables (e.g., `outcome_var ~ predictor_var`) and then specifying an arugment indicating the dataframe in which those variables can be found (e.g., `data = your_dataframe`). 
+
+### *Simple Linear Regression*
+
+#### *Interval/Ratio Predictor Variables*
+
+Here is an example of specifying a linear model that analyzes the relationship between participants' kindergarten and 1st grade standardized math test scores. Note that it is helpful to assign the results of an `lm()` analysis to its own object. That way, you can call the base R `summary()` function on the `lm()` object, which will yield an informative results output.
+
+With two numeric variables, this is essentially the same as conducting a Pearson correlation. In fact, calling for the "standardized" regression coefficient for this analysis will result in the Pearson coefficient. There is a function for standardized regression coefficients in the **QuantPsych** package called `lm.beta()` that can be used for this.
+
+```{r regression_cor, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First, specify the model and assign it to an object with a name you make up.
+kind_1st_mod <- lm(mathtest1 ~ mathtestk, data = InferentialTestData)
+
+# Next, call "summary()" to get the results.
+summary(kind_1st_mod)
+```
+
+For illustration purposes, here is code calling the "lm.beta()" function from the "QuantPsych" package on the model to get the standardized coefficient. This is followed by code for the Pearson correlation for confirmation of the equivalence.
+
+```{r regression_cor_stand, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# Getting the standardized coefficient
+lm.beta(lm(mathtest1 ~ mathtestk, data = InferentialTestData))
+
+# Pearson correlation
+InferentialTestData %>% cor_test(mathtest1, mathtestk)
+```
+
+#### *Nominal/Ordinal Predictor Variables*
+
+Assuming the variables in a dataframe are appropriately classified according to their measurement scale (e.g., numeric, factor, ordered factor), then R will interpret them appropriately in the within `lm()` function. Therefore, using nominal or ordinal predictor variables will result in R automatically creating k-1 dummies with the 1st level of the factor as the reference category for such variables. There are fairly simple ways to change the reference category and the general approach to factor variables in `lm()` from the default, but we won't cover those in this tutorial.
+
+Here is an example of specifying a linear model that analyzes whether participants'  kindergarten standardized math test scores varies as a function of the urbanicity of their school. Note that the reference category for the k-1 urbanicity dummy variables is the "city" category.
+
+With an interval/ratio-level outcome variable and a more than 2-category nominal predictor variable, this is essentially the same as conducting an ANOVA. We will use the same variables to demonstrate a oneway ANOVA in the next section. 
+
+```{r regression_nom, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First, specify the model and assign it to an object with a name you make up.
+mathk_urb_mod <- lm(mathtestk ~ urbanicity, data = InferentialTestData)
+
+# Next, call "summary()" to get the results.
+summary(mathk_urb_mod)
+```
+
+### *Multiple Linear Regression*
+
+
 ### *Model Comparison*
+
+## Traditional Tests for Group Comparisons
+
+### *Comparing Two Independent Samples*
+
+The following code uses the `t_test()` function to compare 1st grade standardized math test scores according to whether the participants were in music or not. 
+```{r independent_t, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% t_test(mathtest1 ~ music)
+```
+
+If the variances of our groups were not equal, we could adjust the default setting of the `var.equal = ` argument within the `t_test()` function to be `var.equal = FALSE`. By doing that, the more robust Welch version of the t-test would be run.
+
+If we needed to compare "dependent samples" instead, then we could adjust the `paired =` argument from its default setting of `FALSE` to `paired = TRUE`.
+
+Use the code space below to test whether participants' socioeconomic status (i.e., a dependent variable in this case, `ses`) varies as a function of whether participants were in music or not (i.e., an independent variable, `music`).
+```{r independent_tuser, exercise = TRUE, exercise.eval = FALSE}
+```
+
+### *Effect Size for Comparing Two Independent Samples*
+
+Calculating the effect size for the difference between two independent means (i.e., Cohen's d, `cohens_d()`) involves similar code:
+```{r cohen_d, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% cohens_d(mathtest1 ~ music)
+```
+
+The same changes to arguments within the `cohens_d()` argument as describe above can be made if the analyses involved independent samples with unequal variance (`var.equal = FALSE`) or paired samples (`paired = TRUE`). Similarly, an argument specifying `hedges.correction = TRUE` can be added if Hedge's G is preferred.
+
+Use the code space below to determine the effect size of the difference in participants' socioeconomic status as a function of whether participants were in music or not.
+```{r cohen_duser, exercise = TRUE, exercise.eval = FALSE}
+```
+
+### *Comparing More than Two Independent Samples*
+
+Conducting a oneway ANOVA to compare more than two independent samples is also quite straightforward. Note that the effect size for this analysis, in this case generalized eta squared, is returned from this function by default.
+
+```{r anova, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% anova_test(mathtestk ~ urbanicity)
+
+```
+
+Use the code space below to run a similar test, but with 1st grade standardized math test scores as the dependent variable.
+
+```{r anova_user, exercise = TRUE, exercise.eval = FALSE}
+
+```
+
+Probing pairwise comparisons as a follow-up to ANOVA analyses can be done in several ways. Here we use the `tukey_hsd()` function. Note that this function also takes a formula and that the results returned are adjusted for multiple comparisons using the Tukey method.
+
+```{r anovapost, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% tukey_hsd(mathtestk ~ urbanicity)
+
+```
+
+Alternatively the `pairwise_t_test()` function with an additional argument of `p.adjust.method =` set to one of the available options (`"bonferroni"`, `"hochberg"`, and so on) could be used.
+
+### *Factorial Designs*
+
+ANOVA models involving more than one independent variable (and interactions) can be estimated with the same `anova_test()` function used above, or with the `factorial_design()` function.
+
+Here is an example of a test of whether 1st grade standardized math test scores vary as a function of music participation, urbanicity - or whether the effect of music participation depends upon students' urbanicity, that is, the interaction of music and urbanicity. 
+
+(Also note that the argument `type = 3` was added to this code to indicate the analysis should use type 3 sums of squares. Type 3 sums of squares is a default in some commercial statistical packages such as SPSS.)
+
+```{r anova2way, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% anova_test(mathtest1 ~ music + urbanicity + music:urbanicity, type = 3)
+
+```
+
+Further pairwise comparisons of significant effects can be conducted in a variety of ways. As one example, it might be desirable to see if urbanicity is a significant effect for those who do and those who do not participate in music. That can be done by first grouping according to music, and then conducting tests of estimated marginal means with **p** values adjusted for multiple comparisons. 
+
+```{r emmeans, exercise = TRUE, exercise.eval = FALSE}
+InferentialTestData %>% group_by(music) %>%
+  emmeans_test(mathtest1 ~ urbanicity, p.adjust.method = "bonferroni")
+
+```
+
+### *Specifying Within-Subjects Factors*
+
+All of the ANOVA examples so far have involved between-subjects factors, exclusively. Specifying models with within-subjects factors is a bit more complicated in R. 
+
+### *Assumptions and Non-Parametric Analogs*
+
+Typical tests of assumptions for the tests mentioned above are also available in the **rstatix** package and can be called with similar code. Here are a few among the options available:
+
+* levene_test()
+* shapiro_test()
+* identify_outliers()
+
+The non-parametric analogs of the t-test for nominal or ordinal outcome data are similarly accessible in the **rstatix** package. Use the `?function_name()` help call on the tests below to see what options are avaialble:
+
+* `chisq_test()`
+* `mcnemar_test()`
+* `wilcox_test()`
+* `kruskal_tes()`
+* `friedman_test()`
