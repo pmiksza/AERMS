@@ -13,7 +13,7 @@ library(AERMS)
 library(tidyverse)
 library(knitr)
 library(rstatix)
-library(QuantPsych)
+library(QuantPsyc)
 knitr::opts_chunk$set(echo = TRUE)
 options(tutorial.storage = list(
   save_object = function(...) { },
@@ -1168,7 +1168,7 @@ The `lm()` function is quite simple to use. It involves specifying an argument t
 
 Here is an example of specifying a linear model that analyzes the relationship between participants' kindergarten and 1st grade standardized math test scores. Note that it is helpful to assign the results of an `lm()` analysis to its own object. That way, you can call the base R `summary()` function on the `lm()` object, which will yield an informative results output.
 
-With two numeric variables, this is essentially the same as conducting a Pearson correlation. In fact, calling for the "standardized" regression coefficient for this analysis will result in the Pearson coefficient. There is a function for standardized regression coefficients in the **QuantPsych** package called `lm.beta()` that can be used for this.
+With two numeric variables, this is essentially the same as conducting a Pearson correlation. In fact, calling for the "standardized" regression coefficient for this analysis will result in the Pearson coefficient. There is a function for standardized regression coefficients in the **QuantPsyc** package called `lm.beta()` that can be used for this.
 
 ```{r regression_cor, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # First, specify the model and assign it to an object with a name you make up.
@@ -1178,7 +1178,17 @@ kind_1st_mod <- lm(mathtest1 ~ mathtestk, data = InferentialTestData)
 summary(kind_1st_mod)
 ```
 
-For illustration purposes, here is code calling the "lm.beta()" function from the "QuantPsych" package on the model to get the standardized coefficient. This is followed by code for the Pearson correlation for confirmation of the equivalence.
+Evaluating the assumptions of a linear model is also a straightforward task in R. Calling the generic base R `plot()` function on a `lm()` object will result in a series of plots that can be used to assess the heterescedasticity and normality of residuals.
+
+```{r regression_cor_assump, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First, specify the model and assign it to an object with a name you make up.
+kind_1st_mod <- lm(mathtest1 ~ mathtestk, data = InferentialTestData)
+
+# Use the "plot()" function to evaluate model assumptions
+plot(kind_1st_mod)
+```
+
+For illustration purposes, here is code calling the "lm.beta()" function from the "QuantPsyc" package on the model to get the standardized coefficient. This is followed by code for the Pearson correlation for confirmation of the equivalence.
 
 ```{r regression_cor_stand, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # Getting the standardized coefficient
@@ -1204,10 +1214,44 @@ mathk_urb_mod <- lm(mathtestk ~ urbanicity, data = InferentialTestData)
 summary(mathk_urb_mod)
 ```
 
+You can actually call the base R `anova()` function on an `lm()` object to get the traditional ANOVA table as output rather than regression results.
+
+```{r regression_nom_anova, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First, specify the model and assign it to an object with a name you make up.
+mathk_urb_mod <- lm(mathtestk ~ urbanicity, data = InferentialTestData)
+
+# Next, call "anova()" to get an ANOVA table.
+anova(mathk_urb_mod)
+```
+
 ### *Multiple Linear Regression*
 
+Adding multiple predictor variables/covariates or higher order terms (e.g., a squared term for quadratic effects) is simply a matter of continuing the formula argument with plus signs `+` and additional variable names. As mentioned above including interaction terms can be done with the `:` symbol between variable names, as in `variable1:variable2`.
 
-### *Model Comparison*
+Here is code for a model that regresses both, whether participants participated in music and their socioeconomic status on their 1st grade standardized math test scores.
+
+```{r regression_mult, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First, specify the model and assign it to an object with a name you make up.
+math1_mult_mod <- lm(mathtest1 ~ music + ses, data = InferentialTestData)
+
+# Next, call "summary()" to get the results.
+summary(math1_mult_mod)
+```
+
+#### *Model Comparison*
+
+Model comparisons can be conducted by assigning the models you would like to compare to separate objects (e.g., `model_1`, `model_2`), and then calling the `anova()` function with the two model names as the arguments (e.g., `anova(model_1, model_2)`).
+
+```{r regression_mult_compare, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
+# First specify the single predictor model.
+math1_mus_mod <- lm(mathtest1 ~ music, data = InferentialTestData)
+
+# Next specify the multiple predictor model.
+math1_mult_mod <- lm(mathtest1 ~ music + ses, data = InferentialTestData)
+
+# Finally, call "anova()" function to compare the two models.
+anova(math1_mus_mod, math1_mult_mod)
+```
 
 ## Traditional Tests for Group Comparisons
 
