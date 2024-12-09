@@ -485,7 +485,7 @@ The pipe operator allows you to write code that can be more intuitive to interpr
 
 For these exercises, we will use a dataset provided in this
 tutorial package called `DescriptiveData`. This dataset contains four
-variables meant to represent characteristics of singers in a choir: (a) age — a numeric variable (i.e., ratio measure), (b) years of experience in singing ensembles - an integer variable (i.e., ratio measure), (c) self-reported biological sex at birth - a two-level factor variable (i.e., nominal measure), and (d) rating of their preferred frequency of rehearsing - a five-level ordered factor variable (i.e., ordinal measure). This particular dataset is used to illustrate analyses in "Chapter 4: Descriptive Analysis" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
+variables meant to represent characteristics of singers in a choir: (a) `Age` — a numeric variable (i.e., ratio measure), (b) `Years.experience.in.singing ensemble` - an integer variable (i.e., ratio measure), (c) `Sex` - self-reported biological sex at birth, a two-level factor variable (i.e., nominal measure), and (d) `Preference.for.rehearsal.frequency` - a five-level ordered factor variable (i.e., ordinal measure). This particular dataset is used to illustrate analyses in "Chapter 4: Descriptive Analysis" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
 
 The first six rows of the data are shown below:
 
@@ -508,8 +508,7 @@ DescriptiveData %>% select(Age) %>% min()
 ```
 
 Use the code space below to try out the `select()` function and the
-`max()` function to identify the largest number of years of experience
-in a singing ensemble among the participants:
+`max()` function to identify the largest `Years.experience.in.singing ensemble` among the participants:
 
 ```{r select_user, exercise = TRUE, exercise.eval = FALSE}
 
@@ -534,15 +533,14 @@ DescriptiveData_Filtered <- DescriptiveData %>% filter(Age >= 40)
 # for the sake of saving space).
 ```
 
-Here is an example of filtering the data so that only those indicating a biological
-sex as Male are in the newly filtered data - note that quirks in this code include that the "equals" operator requires two signs `==`, and that when you work with levels of factor variables, they need to be presented in quotes, and that the variable names and category labels are case-sensitive.
+Here is an example of filtering the data so that only those indicating `Sex` as Male are in the newly filtered data - note that quirks in this code include that the "equals" operator requires two signs `==`, and that when you work with levels of factor variables, they need to be presented in quotes, and that the variable names and category labels are case-sensitive.
 
 ```{r filter2, exercise = TRUE, exercise.eval = FALSE}
 DescriptiveData %>% filter(Sex == "Male") %>% count()
 ```
 
 Use the code space below to try out the `filter()` function and the
-`count()` functionto filter the data so that only those younger than Age
+`count()` function to filter the data so that only those younger than `Age`
 40 are left in the data, then try to filter the data so that only those
 indicating a biological sex as Female are in the newly filtered data:
 
@@ -564,7 +562,7 @@ DescriptiveData %>% mutate(Age_Months = Age*12) %>% head()
 ```
 
 Use the code space below to try out the `mutate()` function and the
-`head()` function to create a variable that is each participants' age in
+`head()` function to create a variable that is each participants' `Age` in
 days:
 
 ```{r mutate_user, exercise = TRUE, exercise.eval = FALSE}
@@ -691,10 +689,10 @@ this example dataset, it would be inappropriate to demonstrate a Pearson correla
 matrix of more than two variables.
 
 It could also be helpful to be able to examine correlations according to sub-groups. 
-This code first filters the Sex variable so only those who reported their biological 
+This code first filters the `Sex` variable so only those who reported their biological 
 sex are considered in the analyses, then it will result in the Pearson correlation 
-between Age and Years experience in a singing ensemble broken out by participants' 
-reported biological sex.
+between `Age` and `Years.experience.in.singing ensemble` broken out by participants' 
+reported biological `Sex`.
 
 ```{r correlate2, exercise = TRUE, exercise.eval = FALSE}
 DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
@@ -704,7 +702,7 @@ DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
 ## Basic Data Visualization with ggplot2
 
 The graphic capabilities of R are amazing and your options for
-visualizing data are vast. In this section, we'll again use the
+visualizing data are vast. In this section, we will again use the
 `DescriptiveData` example dataframe to demonstrate how to make some of
 the most common types of graphs. We will continue working within the
 **tidyverse** ecosystem and use the extremely flexible package
@@ -712,24 +710,24 @@ the most common types of graphs. We will continue working within the
 
 ### *ggplot2*
 
-The "gg" in **ggplot2** refers to the "grammar of graphics," which is a
-reference to a book by Leland Wilkinson. The primary developer of
-**tidyverse** packages and functions, Hadley Wickham, also developed
-**ggplot2**. The most basic elements or "layers" of a plot rendered with
-**ggplot2** include: (a) a dataframe, (b) the designation of
-"aesthetics" (e.g., the mapping of variables to axes and aesthetic
+The "gg" in **ggplot2** stands for the "grammar of graphics," which is a
+reference to a book by Leland Wilkinson about coding programs for data 
+visualization. The primary developer of **tidyverse** packages and functions, 
+Hadley Wickham, also developed **ggplot2**. The most basic elements or "layers" 
+of a plot rendered with **ggplot2** include: (a) a dataframe, (b) the designation 
+of "aesthetics" (e.g., the mapping of variables to axes and aesthetic
 features), and (c) a "geom" (e.g., a shape for the plot such as
-histogram, boxplot, barchart, scatterplot, and so on).
+histogram, boxplot, barplot, scatterplot, and so on).
 
 From there, there are many options for building additional layers to the
 plot and a tremendous amount of flexibility in determining the specific
 look of the features of the plot. When it comes to making beautiful
 plots, there are too many good books and tutorials online that you can
 learn from. For our purposes in this section, we will just make basic
-(albeit ugly) plots. Several basic options for customizing plots will be
+(albeit ugly) plots. Several options for customizing plots will be
 demonstrated in the next section.
 
-The most basic code for plot would look something like this:
+The most basic code for a plot would look something like this:
 
 -   First call the function `ggplot()` and specify the data source:
     -   `ggplot(data = your_data)`
@@ -742,14 +740,14 @@ The most basic code for plot would look something like this:
 -   Next, choose a "geom" to indicate what type of plot you are aiming
     to make by adding one of the possible options with a plus sign (`+`)
     after the `ggplot()` function:
-    +`ggplot(data = your_data, aes(x = variable_1)) + geom_histogram()`
+    + `ggplot(data = your_data, aes(x = variable_1)) + geom_histogram()`
 
 ### *Histogram*
 
-Creating a histograms is critical for examining the distribution of a
+Creating a histogram is critical for examining the distribution of a
 quantitative variable. Here is an example of code for creating a
-histogram of the Age variable from the example `DescriptiveData` dataset
-that follows the generic form described above.
+histogram that follows the generic form described above for the `Age` variable 
+from the example `DescriptiveData` dataset.
 
 ```{r histogram, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # Note that the "data =" part of the code was removed since the ggplot() function
@@ -757,8 +755,7 @@ that follows the generic form described above.
 ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
 ```
 
-Use the code space below to try and code a histogram for the Years
-experience in a singing ensemble variable:
+Use the code space below to try and code a histogram for the `Years.experience.in.singing.ensemble` variable:
 
 ```{r histogram_user, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 
@@ -767,23 +764,23 @@ experience in a singing ensemble variable:
 ### *Boxplot*
 
 Creating a boxplot instead is simply a matter of choosing a different
-geom. Here is an example of code for creating a boxplot of the Age
-variable. Note that the values on the y axis are not informative and refer to the width of the box. You'll see how to remove them in the next section of this tutorial.
-
+geom. Here is an example of code for creating a boxplot of the `Age`
+variable. Note that the values on the y axis are not informative and refer
+to the width of the box. You'll see how to remove them in the next section of 
+this tutorial.
 
 ```{r boxplot1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Age)) + geom_boxplot()
 ```
 
-You could make it a more typical looking vertical-oriented boxplot by
-assiging the Age variable to y instead of x.
+You could make it a more typical looking vertically-oriented boxplot by
+assigning the `Age` variable to y instead of x.
 
 ```{r boxplot2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(y = Age)) + geom_boxplot()
 ```
 
-Use the code space below to try and code a boxplot for the Years
-experience in a singing ensemble variable:
+Use the code space below to try and code a boxplot for the `Years.experience.in.singing.ensemble` variable:
 
 ```{r boxplot_user, exercise = TRUE, exercise.eval = FALSE}
 
