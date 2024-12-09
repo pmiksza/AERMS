@@ -435,7 +435,7 @@ Four common types of data files you are likely to encounter include:
     contain a good deal of meta-data, e.g., variable names, value
     labels, and so on)
 -   Stata Files (XXX.dta): Data files created in Stata (which can also
-    contain m eta-data)
+    contain meta-data)
 
 The [**readr**](https://readr.tidyverse.org/) package includes a
 function for importing csv files: `read_csv()`. The
@@ -448,11 +448,7 @@ As implied in the bullet list above, some types of data files can be
 more complex than others. For example, "XXX.csv" files will tend to be
 very simple, whereas Excel files can have multiple sheets and SPSS or
 Stata files can come with user-added meta-data. As such, the various
-functions for reading in different types of data files have many built
-in options for telling R how to interpret the file. We won't deal with
-those here, suffice to say it's important to know what's in the file you
-are reading into R and then checking that it came in the way you wanted
-it to.
+functions for reading in different types of data files have many arguments for telling R how to interpret the file. We won't deal with those here, suffice to say it's important to (a) know what's in the file you are reading into R and (b) check that the file came in the way you wanted it to.
 
 The following code demonstrates using functions in the readr package to
 load each of the data types described above. The data are files included
@@ -482,29 +478,14 @@ str(data_csv)
 
 ## Selecting, Filtering, and Altering Variables within Dataframes
 
-In this section, we'll begin to use functions from the **tidyverse**
-package to demonstrate how to select variables for analysis, filter data
-according to specific values of a variable, and how to create new
-variables. More specifically, we we will use the `select()`, `filter()`,
-and `mutate()` functions from within the **dplyr** package. Given that
-these functions are from a package within the tidyverse ecosystem, they
-each can be used with what is referred to as a "*pipe operator*": `%>%`.
-The pipe operator allows you to write code that can be more intuitive to
-interpret than that written with some approaches in R base code.
+In this section, we will use the `select()`, `filter()`, and `mutate()` functions from the **dplyr** package to demonstrate how to select variables from a dataframe for analysis, filter a dataframe according to specific values of a variable, and how to create and add new variables to a dataframe, respectively. 
 
-For these exercises, we'll use a dataset I've provided with this
+Given that these functions are from a package within the tidyverse ecosystem, they each can be used with what is referred to as a "pipe operator": `%>%`.
+The pipe operator allows you to write code that can be more intuitive to interpret since it can help you visually track the steps in your code.
+
+For these exercises, we will use a dataset provided in this
 tutorial package called `DescriptiveData`. This dataset contains four
-variables meant to represent characteristics of hypothetical singers in
-a choir: (a) age — a numeric variable (i.e., ratio measure), (b) years
-of experience in singing ensembles - an integer variable (i.e., ratio
-measure), (c) self-reported biological sex at birth - a two-level factor
-variable (i.e., nominal measure), and (d) rating of their preferred
-frequency of rehearsing - a five-level ordered factor variable (i.e.,
-ordinal measure). This particular dataset is included as a supplement to
-the Miksza & Elpus text, [*Design and Analysis for Quantitative Research
-in Music
-Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904),
-and is used to illustrate analyses in "Chapter 4: Descriptive Analysis."
+variables meant to represent characteristics of singers in a choir: (a) age — a numeric variable (i.e., ratio measure), (b) years of experience in singing ensembles - an integer variable (i.e., ratio measure), (c) self-reported biological sex at birth - a two-level factor variable (i.e., nominal measure), and (d) rating of their preferred frequency of rehearsing - a five-level ordered factor variable (i.e., ordinal measure). This particular dataset is used to illustrate analyses in "Chapter 4: Descriptive Analysis" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
 
 The first six rows of the data are shown below:
 
@@ -518,13 +499,9 @@ each function out yourself.
 
 ### *Selecting Variables*
 
-```{r select, exercise = TRUE, exercise.eval = FALSE}
-# First we start with the dataframe object then use the pipe to indicate that we
-# want to pass the data to another  function, then we call the name of the 
-# variable we want to select within the "select()" function, and then we can call a 
-# function that we would like to use to act upon the selected variable - note 
-# that you don't need to actually write the name of the variable in the final function.
+First we start with the dataframe object then use the pipe `%>%` to indicate that we want to pass the data to another  function, then we call the name of the variable we want to select within the `select()` function, and then we can call a function that we would like to use to act upon the selected variable - note that you don't need to actually write the name of the variable in the final function.
 
+```{r select, exercise = TRUE, exercise.eval = FALSE}
 # This is an example of selecting the "Age" variable and then identifying the
 # minimum age value (i.e., the youngest age).
 DescriptiveData %>% select(Age) %>% min()
@@ -540,15 +517,9 @@ in a singing ensemble among the participants:
 
 ### *Filtering Data*
 
-```{r filter, exercise = TRUE, exercise.eval = FALSE}
-# Again, we start with the dataframe object then use the pipe to indicate that we
-# want to pass the data to the following function, then we call the name of the 
-# variable we want to use to to filter our data within the "filter()" function. 
+Again, we start with the dataframe object then use the pipe `%>%` to indicate that we want to pass the data to the following function, then we call the name of the variable we want to use to to filter our data within the `filter()` function. You can then continue with another pipe to act upon the filtered data with additional functions, or you could create a new dataset from the filtered data assigning the entire line of code to a newly named object.
 
-# You can then continue with another pipe to act upon the filtered data with 
-# additional functions, or you could create a new dataset from the filtered data 
-# assigning the entire line of code to a newly named object.
-
+```{r filter1, exercise = TRUE, exercise.eval = FALSE}
 # Here is an example of filtering the data so that only those who are 40 years or
 # older remain, and then a call of the count() function to show how many of the 
 # original 115 participants are left in the newly filtered data.
@@ -561,12 +532,12 @@ DescriptiveData_Filtered <- DescriptiveData %>% filter(Age >= 40)
 # You could use the "head()," "tail()," "glimpse()," or "str()" functions to view
 # the new dataframe titled "DescriptiveData_Filtered." (That's not included here
 # for the sake of saving space).
+```
 
-# Here is an example of filtering the data so that only those indicating a biological
-# sex as Male are in the newly filtered data - note that quirks in this code
-# include that the "equals" operator requires two signs, that when you work
-# with levels of factor variables, they need to be presented in quotes, and
-# that the variable names and category labels are case-sensitive.
+Here is an example of filtering the data so that only those indicating a biological
+sex as Male are in the newly filtered data - note that quirks in this code include that the "equals" operator requires two signs `==`, and that when you work with levels of factor variables, they need to be presented in quotes, and that the variable names and category labels are case-sensitive.
+
+```{r filter2, exercise = TRUE, exercise.eval = FALSE}
 DescriptiveData %>% filter(Sex == "Male") %>% count()
 ```
 
@@ -579,20 +550,17 @@ indicating a biological sex as Female are in the newly filtered data:
 
 ```
 
-### *Creating New Variables with* `mutate()`
+### *Creating New Variables*
+
+Once again, we start with the dataframe object then use the pipe `%>%` to indicate that 
+we want to pass the data to the following function, but, with `mutate()` we need 
+to specify a name for our new variable and then a formula for how create the new variable.
 
 ```{r mutate, exercise = TRUE, exercise.eval = FALSE}
-# Once again, we start with the dataframe object then use the pipe to indicate that 
-# we want to pass the data to the following function, but, with "mutate()" we need 
-# to specify a name for our new variable and then a formula for how create the 
-# new variable.
-
 # The code below creates a new variable named "Age_Months" that is each participants' 
 # original Age value multiplied by 12, then the "head()" function is called so that
 # you can see that the new variable is appended to the dataframe.
 DescriptiveData %>% mutate(Age_Months = Age*12) %>% head()
-# You might have to use the arrow in the upper right of the output box to see
-# all the columns, including the new one all the way to the right.
 ```
 
 Use the code space below to try out the `mutate()` function and the
