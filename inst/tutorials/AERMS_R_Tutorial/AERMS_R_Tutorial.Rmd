@@ -1027,9 +1027,8 @@ ggplot(InferentialTestData, aes(x = mathtestk, y = mathtest1)) +
 Here is code for the same scatterplot with customizations. Note that the 
 `alpha = ` argument is used in the `geom_point()` function to add a degree of
 transparency to the points so that the overplotting (e.g., lots of points in the 
-same general area) is a bit easier to see. Also, since this is the final example, 
-it demonstrates including a variety of specific theme specifications rather than
-a complete theme.
+same general area) is a bit easier to see. Also, since this is the final example
+in this section, it demonstrates including a variety of arguemnts that can be used for specific theme specifications rather than a complete theme.
 
 ```{r scatterplot1Detail2, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(InferentialTestData, aes(x = mathtestk, y = mathtest1)) + 
@@ -1059,11 +1058,13 @@ Use this code space to customize your own scatterplot.
 
 ## Basic Inferential Analyses and Formula Notation
 
-We will continue to use the `InferentialTestData` dataset described in the previous section for the examples in this section. To keep things relatively simple, we will also restrict our analyses to the use of the base R linear model (i.e., `lm()`) function and other functions available in the **rstatix** package described earlier. In addition, all of the functions that will be demonstrated in the remaining sections can take a formula as the argument for specifying the test you would like to conduct. As such, we'll begin with a quick introduction to formula notation.
+We will continue to use the `InferentialTestData` dataset described in the previous section for the examples in this section. To keep things relatively simple, we will also restrict our analyses to the use of the base R linear model function (i.e., `lm()`) and  functions available in the **rstatix** package described earlier. 
+
+In addition, all of the functions that will be demonstrated in the remaining sections can take a formula as the argument for specifying the test you would like to conduct. As such, we will begin with a quick introduction to formula notation.
 
 ### *Using Formula Notation*
 
-For the analyses demonstrated in the next section, the formula notation will involve specifying an dependent variable (i.e., an outcome, `y`) and independent variables (i.e., predictors, `x`). The tilde, `~`, symbol is used to separate the dependent from the independent variables. Therefore, a basic analysis of the influence of one independent variabl on one dependent variable would look like this:
+For the analyses demonstrated in the next section, the formula notation will involve specifying a dependent variable (i.e., an outcome, `y`) and independent variables (i.e., predictors, `x`). The tilde, `~`, symbol is used to separate the dependent from the independent variables. Therefore, a basic analysis of the influence of one independent variable on one dependent variable would look like this:
 
 |   `y ~ x`
 \
@@ -1077,7 +1078,7 @@ The interaction effect could be added like this:
 
 ### *A Quick Note About Options Available in R*
 
-It's worth taking a moment to mention that in addition to base R functions, there are many packages that have functions for doing the relatively simple analyses presented in the sections below. This note is a reminder that all of the test functions shown here are from the **rstatix** package.
+It's worth taking a moment to mention that in addition to base R functions, there are many packages that have functions for doing the relatively simple analyses presented in the next sections. 
 
 Also recall that the **rstatix** package is designed to work well with the **tidyverse** suite of packages. As such, we will make frequent use of the pipe operator, `%>%` to pass the `InferentialTestData` dataframe to various tests functions.
 
