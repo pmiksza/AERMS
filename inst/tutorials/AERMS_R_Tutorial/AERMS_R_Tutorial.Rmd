@@ -329,44 +329,37 @@ my_data$character_variable_now_factor <- as.factor(my_data$character_variable)
 str(my_data)
 ```
 
-## R Functions and Installing and Loading Packages
 
-### *Functions and Arguments*
+## *Functions and Arguments*
 
 R comes "preloaded" with many, many functions. That is what is referred
 to as "base" R. 
 
-A function is essentially a self-contained bundle of code stored in a single name that can be used to execute the whole bundle on a given object (or objects) at once. For example, the `data.frame()`, `head()`, `tail()`, and `str()` functions used above each represent functions that take a dataframe object and execute some length of code to describe the contents of that dataframe object In contrast, we used the `as.integer()` function above to take a single vector object and execute some length of code to coerce a numeric object into an integer class object.
+A function is essentially a self-contained bundle of code stored in a single name that can be used to execute the whole bundle on a given object (or objects) at once. For example, the `data.frame()`, `head()`, `tail()`, and `str()` functions used in the previous section take a dataframe object and execute some length of code to describe the contents of that dataframe object. In contrast, we used the `as.integer()` function above to take a single vector object and execute some length of code to coerce a numeric object into an integer class object.
 
-The elements that are put "inside parentheses" of a function are called **arguments**, which are specifications for options regarding how a given function can be used. There are at least three easy way to learn about the specific arguments possible for each function and how to use them:
+The elements that are put inside the parentheses of a function are called **arguments**, which are specifications for options regarding how a given function is used. There are at least three easy way to learn about the specific arguments possible for each function:
 
 -   Calling the name of the function preceded by a `?`, such as `?function.name()`
--   Looking up the function's description with package documentation on the official Comprehensive R Network website ([CRAN](https://cran.r-project.org/web/packages/available_packages_by_date.html))
--   Search the "function name" and "R" on the web and looking for the many, many ways individual users have explained how to use the function (the R community of users is extremely generous and helpful when it comes to learning how to use R)
+-   Looking up the function's description in package documentation on the official Comprehensive R Network website ([CRAN](https://cran.r-project.org/web/packages/available_packages_by_date.html))
+-   Searching the "function name" and "R" on the web and looking for the many, many ways individual users have explained how to use the function (the R community of users is extremely generous and helpful when it comes to learning how to use R)
 
-All functions come with default settings for its arguments, and in most cases those settings will be exactly what you need. For example, you can caculate the arithmetic mean of a variable using the `mean()` function available in the base setup of R. Assuming you have no missing data in your variable, calling the `mean()` function with that variable as the object (e.g., `mean(variable)` will work just fine. However, if there are missing values, then the function will report an error. That's because the `mean()` function has three arguments and one of them assumes that there are no missing values in the object you are using it on (see documentation here [mean documentation](https://rdrr.io/r/base/mean.html)). The arguments are:
+All functions come with default settings for its arguments and although in most cases those settings will be exactly what you need, you will eventually need to adjust certain arguments to avoid errors in your code. For example, you can calculate the arithmetic mean of a variable using the `mean()` function available in the base setup of R. Assuming you have no missing data in your variable, calling `mean(variable)` will work just fine. However, if there are missing values, then the function will report an error. That's because the `mean()` function has three arguments and one of them assumes that there are no missing values in the object you are using it on (see [mean documentation](https://rdrr.io/r/base/mean.html)). 
+
+The arguments for `mean()` are:
 
 -   `x`       the name of the object to calculate the mean of
 -   `trim`    an argument that allows you to "trim" a fraction of the values from each end of the range of the variable prior to calculating the mean
 -   `na.rm`   an argument that specifies whether missing values (labeled as "NA's") should be removed prior to calculating the mean or not — which can be specified with `na.rm = TRUE` or `na.rm = FALSE`
 
-Importantly, the default `na.rm` argument setting in the `mean()` function is `na.rm = FALSE`. Therefore, if you are calling the `mean()` function with a variable that has missing values (i.e., "NA's"),  you would have to specify that as follows: `mean(variable, na.rm = TRUE)`. Otherwise, you will get an error when trying to sue the function.
+Importantly, the default `na.rm` argument setting in the `mean()` function is `na.rm = FALSE`. Therefore, if you are calling the `mean()` function with a variable that has missing values (i.e., "NA's"),  you would have to specify that by setting `mean(variable, na.rm = TRUE)`. Otherwise, you will get an error when trying to use the function.
 
-Even very experienced R users do not remember all of the various options that are possible with different arguments within different functions. Calling help on any function `?function.name()` to review the specific possibilities available with function argument options is a common step for most users. Searching for examples of how to use functions online, either on pages of official documentation or otherwise, is also extremely common!
+Even very experienced R users do not remember all of the various options that are possible for the various arguments within functions. Calling help on any function `?function.name()` to review the specific argument possibilities available is a common activity for most users. Searching for examples of how to use functions online, either on pages of official documentation or otherwise, is also extremely common!
 
 You could create your own functions in R fairly easily as well. As you gain experience with the programming language, building your own custom functions to enact common or repetitive tasks can save you a lot of time and typing.
 
-### *Packages*
+## *Installing and Loading Packages*
 
-You can easily expand the functionality of R by
-installing and using extension packages made by developers within the
-open-source R community. For beginner R users, this can be somewhat
-confusing since the combination of base functions with the possibilities
-of functions from additional packages can offer many ways for conducting
-any given procedure in R. Often, however, additional packages can make
-procedures in R more user-friendly. All packages that are available for
-installing using the typical methods within R are documented on the [R
-website](https://cran.r-project.org/).
+You can easily expand the functionality of R by installing and using extension packages made by developers within the open-source R community. For beginner R users, this can be somewhat confusing since the combination of base functions with the possibilities of functions from additional packages can offer many ways for conducting any given procedure in R. Often, however, additional packages can make procedures in R more user-friendly. All packages that are available for installing using the typical methods within R are documented on the [R Website](https://cran.r-project.org/).
 
 Here is an example of downloading a package and loading it for use in R.
 The
