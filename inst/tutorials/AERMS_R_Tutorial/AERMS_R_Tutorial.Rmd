@@ -10,10 +10,10 @@ editor_options:
 ```{r setup, include=FALSE}
 library(learnr)
 library(AERMS)
+library(QuantPsyc)
 library(tidyverse)
 library(knitr)
 library(rstatix)
-library(QuantPsyc)
 knitr::opts_chunk$set(echo = TRUE)
 options(tutorial.storage = list(
   save_object = function(...) { },
@@ -807,6 +807,8 @@ assigning a second variable to `fill = variable_2` in the `aes()`
 function and then specifying an additional argument of
 `position = "stack"` or `position = "dodge"` within the `geom_bar()`
 function.
+
+Note that the axis labels are very crowded in this plot. We will look at making plot customizations to address issues like that in the next section.
 
 ```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE, message =FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
