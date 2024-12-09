@@ -359,7 +359,7 @@ You could create your own functions in R fairly easily as well. As you gain expe
 
 ## *Installing and Loading Packages*
 
-You can easily expand the functionality of R by installing and using extension packages made by developers within the open-source R community. For beginner R users, this can be somewhat confusing since the combination of base functions with the possibilities of functions from additional packages can offer many ways for conducting any given procedure in R. Often, however, additional packages can make procedures in R more user-friendly. All packages that are available for installing using the typical methods within R are documented on the [R Website](https://cran.r-project.org/).
+You can easily expand the functionality of R by installing and using extension packages made by developers within the open-source R community. For beginner R users, this can be somewhat confusing since the combination of base functions with the possibilities of functions from additional packages can offer many ways for conducting any given procedure in R. Often, however, additional packages can make procedures in R more user-friendly. Packages that are available for download and installation are documented on the [R Website](https://cran.r-project.org/).
 
 Here is an example of downloading a package and loading it for use in R.
 The
@@ -368,18 +368,11 @@ package was designed by Alboukadel Kassambara to make some of the most
 common statistical analyses that social scientists use simple to execute
 in R.
 
-```{r install_load_package, exercise = TRUE, exercise.eval = FALSE}
-# Using the base R "install.packages()" function will signal to R to find 
-# the package online, download it, and install it for use in your R system.
-install.packages("rstatix")
+Using the base R `install.packages()` function will signal to R to find the package online, download it, and install it for use in your R system. For the **rstatix** packages, that would look like this: `install.packages("rstatix")`.
 
-# To "load" the package, use the base R "library()" function, then all of the 
-# functions within the package # # will be available to you. You only need to 
-# load a package once during an R session.
-library(rstatix)
-```
+To "load" the package, you can use the base R `library()` function. Then all of the functions within the package will be available to you. You only need to load a package once during an R session. Loading the **rstatix** packages would look like this: `library(rstatix)`.
 
-As an example of the convenience and functionality that packages offer,
+As an example of the convenience and functionality that packages can offer,
 consider that it is possible to calculate descriptive statistics for a
 given variable in R using base functions such as: `mean()`, `sd()`,
 `range()`, `min()`, `max()`, `median()`, and so on. But, there are more
