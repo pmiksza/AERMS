@@ -617,8 +617,8 @@ round(proportions(Bio_Rehearse_Table), 2)
 ```
 
 You could also request percentages *by row* by specifying an additional
-argument within the `proportion()` function of "margin = 1" or *by
-column* with "margin = 2".
+argument within the `proportion()` function of `margin = 1` or *by column* 
+with `margin = 2`.
 
 ```{r tables3, exercise = TRUE, exercise.eval = FALSE}
 Bio_Rehearse_Table <- table(DescriptiveData$Sex, DescriptiveData$Preference.for.rehearsal.frequency)
@@ -655,11 +655,6 @@ be summarized with the `get_summary_stats()` function from **rstatix**.
 ```{r summary_stat, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable.
 DescriptiveData %>% get_summary_stats(Age)
-
-# There are additional arguments you could specify if you would like less 
-# information. For example, adding a "type = common" argument to the function 
-# would yield fewer summary statistics.
-DescriptiveData %>% get_summary_stats(Age, type = "common")
 ```
 
 ### *Summary Statistics by Sub-Group*
@@ -676,30 +671,32 @@ DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 
 ### *Correlation*
 
-Examining bivariate correlations between variables is also a common
-analysis task. As with all things in R, there are many, many ways to
-calculate correlation coefficients in R and a variety of packages with
-correlation functions. The **rstatix** package has several useful
-functions for calculating correlations. An additional element of
-flexibility in all of the rstatix correlation functions is the ability
-to specify among several common types of correlation: Pearson, Spearman,
-or Kendall.
+Examining bivariate correlations is also a common analysis task. As with all 
+things in R, there are many, many ways to calculate correlation coefficients and 
+a variety of packages with correlation functions. The **rstatix** package has 
+several useful functions for calculating correlations. An additional element of
+flexibility in all of the rstatix correlation functions is the ability to specify 
+among several common types: Pearson, Spearman, or Kendall.
 
-```{r correlate, exercise = TRUE, exercise.eval = FALSE}
+```{r correlate1, exercise = TRUE, exercise.eval = FALSE}
 # The "cor_test()" function is quite flexible and intuitive. This code returns
 # a Pearson correlation between Age and Years experience in a singing ensemble.
 DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
+```
 
-# There is also a useful function for creating correlation matrices "cor_mat()".
-# Since there are only two interval/ratio level variables in this example
-# dataset, it would be inappropriate to demonstrate a Pearson correlation matrix
-# of more than two variables.
 
-# It could also be helpful to be able to examine correlations according to
-# sub-groups. This code first filters the Sex variable so only those who reported
-# their biological sex are considered in the analyses, then it will result in 
-# the Pearson correlation between Age and Years experience in a singing ensemble 
-# broken out by participants' reported biological sex.
+There is also a useful function in the **rstatix** package for creating correlation 
+matrices `cor_mat()`. Since there are only two interval/ratio level variables in 
+this example dataset, it would be inappropriate to demonstrate a Pearson correlation 
+matrix of more than two variables.
+
+It could also be helpful to be able to examine correlations according to sub-groups. 
+This code first filters the Sex variable so only those who reported their biological 
+sex are considered in the analyses, then it will result in the Pearson correlation 
+between Age and Years experience in a singing ensemble broken out by participants' 
+reported biological sex.
+
+```{r correlate2, exercise = TRUE, exercise.eval = FALSE}
 DescriptiveData %>% filter(Sex == "Male" | Sex == "Female") %>%
   group_by(Sex) %>% cor_test(Age, Years.experience.in.singing.ensemble)
 ```
