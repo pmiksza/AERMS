@@ -376,10 +376,9 @@ As an example of the convenience and functionality that packages can offer,
 consider that it is possible to calculate descriptive statistics for a
 given variable in R using base functions such as: `mean()`, `sd()`,
 `range()`, `min()`, `max()`, `median()`, and so on. But, there are more
-convenient ways to get all of those summary statistics and more with
-only one function from other packages. For example, both the **rstatix**
-package and the `psych` package contain a single function for returning
-all of those summary values.
+convenient ways to get all of those summary statistics with other packages. For example, both the **rstatix** package and the **psych** package contain a single function for returning all of those summary values.
+
+Here is an example of calculating descriptive statistics summary with base R functions vs. the `get_summary_stats()` function from the **rstatix** package:
 
 ```{r base_rstatix, exercise = TRUE, exercise.eval = FALSE}
 # Again, these first lines are just creating the dataframe for this example.
@@ -408,10 +407,9 @@ get_summary_stats(my_data, numeric_variable)
 
 The [**tidyverse**](https://www.tidyverse.org/) refers to a suite of 8
 packages created by a number of developers led by Hadley Wickham that
-are designed to make various data science tasks more intuitive to do in
-R. This tutorial will incorporate tidyverse-style coding because it can
-ease the learning curve when it comes to getting started in R. Some
-tidyverse packages we will use include **ggplot2**: a graphing package,
+are designed to provide more intuitive methods for conducting various data science tasks in R. This tutorial will incorporate tidyverse-style coding because it can ease the learning curve when it comes to getting started in R. 
+
+Some tidyverse packages we will use include **ggplot2**: a graphing package,
 **dplyr**: a data manipulation package, and **readr** as well as
 **haven**: packages for importing data. However, we will not have to
 install and load the packages separately as installing and loading
@@ -420,23 +418,15 @@ install and load the packages separately as installing and loading
 The **rstatix** package demonstrated above is designed to work
 seamlessly with other packages in the tidyverse as well.
 
-### *lavaan*
-
-The [**lavaan**](https://lavaan.ugent.be/) package was designed by Yves
-Rosseel for anlaysis tasks such as path analysis, confirmatory factor
-analysis, structural equation modeling, and growth curve models. We will
-use functions from the **lavaan** package when conducting factor
-analyses.
-
 ## Importing and Viewing Various Types of Data Files
 
-Conducting data analyses in R requires loading your data set (i.e., as
-an object) into the R Global Environment. Unlike some programs such as
+Conducting data analyses in R requires loading your data set as
+an object in the R Global Environment. Unlike some programs such as
 SPSS or Excel, there is not a direct data editor associated with R or R
 Studio. However, there are packages with functions available for reading
 virtually any type of data file into R.
 
-Four common types of data files you are likely to encounter:
+Four common types of data files you are likely to encounter include:
 
 -   CSV Files (XXX.csv): "Comma-separated-value" data that can be
     created in a variety of programs
