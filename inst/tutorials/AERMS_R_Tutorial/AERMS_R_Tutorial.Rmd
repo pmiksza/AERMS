@@ -635,6 +635,7 @@ is printed that is labeled "prop").
 
 ```{r tables_rstatix1, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
+
 DescriptiveData %>% freq_table(Preference.for.rehearsal.frequency)
 ```
 
@@ -643,6 +644,7 @@ Here is an example of an **rstatix** cross-tabulation with the
 
 ```{r tables_rstatix2, exercise = TRUE, exercise.eval = FALSE}
 # A line of code using a pipe operator can be used for this.
+
 DescriptiveData %>% freq_table(Sex, Preference.for.rehearsal.frequency)
 ```
 
@@ -652,6 +654,7 @@ be summarized with the `get_summary_stats()` function from **rstatix**.
 
 ```{r summary_stat, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable.
+
 DescriptiveData %>% get_summary_stats(Age)
 ```
 
@@ -664,6 +667,7 @@ that type of task.
 ```{r summary_stat_group, exercise = TRUE, exercise.eval = FALSE}
 # This code will provide summary statistics for the Age variable broken out by
 # participants' reported biological sex
+
 DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 ```
 
@@ -679,6 +683,7 @@ among several common types: Pearson, Spearman, or Kendall.
 ```{r correlate1, exercise = TRUE, exercise.eval = FALSE}
 # The "cor_test()" function is quite flexible and intuitive. This code returns
 # a Pearson correlation between Age and Years experience in a singing ensemble.
+
 DescriptiveData %>% cor_test(Age, Years.experience.in.singing.ensemble)
 ```
 
@@ -752,6 +757,7 @@ from the example `DescriptiveData` dataset.
 ```{r histogram, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # Note that the "data =" part of the code was removed since the ggplot() function
 # will assume the first argument is the name of the dataframe.
+
 ggplot(DescriptiveData, aes(x = Age)) + geom_histogram()
 ```
 
@@ -789,14 +795,14 @@ Use the code space below to try and code a boxplot for the `Years.experience.in.
 ### *Barplot*
 
 Creating barplots for nominal (i.e., factor in R) or ordinal variables
-(i.e., ordered factor in R) can be done with very similar code.
+(i.e., ordered factors in R) can be done with very similar code.
 
 ```{r barchart, exercise = TRUE, exercise.eval = FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency)) + geom_bar()
 ```
 
 Creating "stacked" or "dodged" barplots for two nominal (i.e., factor in
-R) or ordinal variables (i.e., ordered factor in R) would require
+R) or ordinal variables (i.e., ordered factors in R) would require
 assigning a second variable to `fill = variable_2` in the `aes()`
 function and then specifying an additional argument of
 `position = "stack"` or `position = "dodge"` within the `geom_bar()`
@@ -805,6 +811,7 @@ function.
 ```{r barchart_dodge, exercise = TRUE, exercise.eval = FALSE, message =FALSE}
 ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
                             fill = Sex)) + geom_bar(position = "dodge")
+
 # Note that this plot is particularly odd since there are "empty cells" for 
 # some combinations of these two variables.
 ```
@@ -814,7 +821,7 @@ ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
 Creating scatterplots to depict the relationship between two
 quantitative variables will feel similarly intuitive once you get the
 hang of the grammar of graphics approach. Here is a scatterplot of the
-Age and Years experience in a singing ensemble variables.
+`Age` and `Years.experience.in.singing ensemble` variables.
 
 ```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
@@ -838,20 +845,19 @@ ggplot(DescriptiveData, aes(x = Age,
 In this section, a few of the additional options for customizing plots
 in ggplot2 will be demonstrated. We will use a different dataset that is
 built into this package for these demonstrations since it is larger and can 
-allow for few more options. It is titled `InferentialTestData`, 
+allow for few more options. It is titled `InferentialTestData`. 
 
 This dataset contains nine variables representing characteristics and
-measurements of school children: (a) kindergarten students'
-standardized math test scores — a numeric variable (i.e., interval
-measure), (b) those same students' 1st grade standardized math test
-scores — a numeric variable (i.e., interval measure), (c) the urbanicity
-of the students' school (i.e., city, suburb, town, rural) - a factor variable 
-(i.e., nominal measure), (d) whether they participated in school music class 
-(i.e., No Music, Yes Music) - a factor variables (i.e., a nominal variable), and
-(e) a set of "dummy" variables that indicate "Yes" or "No" for each urbanicity 
-category - factor variables. This particular dataset is included as a supplement 
-to the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music
-Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904), and is used to illustrate analyses in "Chapter 10: Regression."
+measurements of school children: (a) `mathtestk` - kindergarten students'
+standardized math test scores, a numeric variable (i.e., interval
+measure), (b) `mathtest1` - those same students' 1st grade standardized math test
+scores, a numeric variable (i.e., interval measure), (c) `urbancity` - the urbanicity
+of the students' school (i.e., city, suburb, town, rural), a factor variable 
+(i.e., nominal measure), (d) `music` - whether they participated in school music class 
+(i.e., No Music, Yes Music), a factor variables (i.e., a nominal variable), and
+(e) `ses` - a quantitative indiactor of students' socioeconomic status, and (f) a set of "dummy" variables that indicate "Yes" or "No" for each urbanicity 
+category - factor variables. This particular dataset is used to illustrate analyses 
+in "Chapter 10: Regression" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
 
 The first six rows of the data are shown below:
 
