@@ -1084,9 +1084,9 @@ Also recall that the **rstatix** package is designed to work well with the **tid
 
 ## Linear Regression Models
 
-Many of the statistical tests arts education researchers wish to use can be executed with some version or generalized form of the **general linear model**. For example, correlation, t-tests, ANOVAs, and regression analyses can all be interpreted as an instantiation of the general linear model. For example, all of the objectives of the statistical tests mentioned in the previous sentence can be achieved with the single base R function `lm()`, which is for fitting linear models.
+Many of the statistical tests arts education researchers wish to use can be executed with some generalized form of the **general linear model**. For example, correlation, t-tests, ANOVAs, and regression analyses can all be interpreted as an instantiation of the general linear model. All of the objectives of the statistical tests mentioned in the previous sentence can be achieved with the single base R function `lm()`, which is for fitting linear models.
 
-The `lm()` function is quite simple to use. It involves specifying an argument that is a formula with variable names to indicate dependent and independent variables (e.g., `outcome_var ~ predictor_var`) and then specifying an arugment indicating the dataframe in which those variables can be found (e.g., `data = your_dataframe`). 
+The `lm()` function is quite simple to use. It involves specifying an argument that is a formula with variable names to indicate dependent and independent variables (e.g., `outcome_var ~ predictor_var`) and then specifying an argument indicating the dataframe in which those variables can be found (e.g., `data = your_dataframe`). 
 
 ### *Simple Linear Regression*
 
@@ -1114,7 +1114,7 @@ kind_1st_mod <- lm(mathtest1 ~ mathtestk, data = InferentialTestData)
 plot(kind_1st_mod)
 ```
 
-For illustration purposes, here is code calling the "lm.beta()" function from the "QuantPsyc" package on the model to get the standardized coefficient. This is followed by code for the Pearson correlation for confirmation of the equivalence.
+For illustration purposes, here is code calling the `lm.beta()` function from the **QuantPsyc** package on the model to get the standardized coefficient. This is followed by code for the Pearson correlation for confirmation of the equivalence.
 
 ```{r regression_cor_stand, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 # Getting the standardized coefficient
@@ -1126,9 +1126,9 @@ InferentialTestData %>% cor_test(mathtest1, mathtestk)
 
 #### *Nominal/Ordinal Predictor Variables*
 
-Assuming the variables in a dataframe are appropriately classified according to their measurement scale (e.g., numeric, factor, ordered factor), then R will interpret them appropriately in the within `lm()` function. Therefore, using nominal or ordinal predictor variables will result in R automatically creating k-1 dummies with the 1st level of the factor as the reference category for such variables. There are fairly simple ways to change the reference category and the general approach to factor variables in `lm()` from the default, but we won't cover those in this tutorial.
+Assuming the variables in a dataframe are appropriately classified according to their measurement scale (e.g., numeric, factor, ordered factor), then R will interpret them appropriately in the within `lm()` function. Therefore, using nominal or ordinal predictor variables will result in R automatically creating k-1 dummies with the 1st level of the factor as the reference category for such variables. There are fairly simple ways to change the reference category and the general approach for dealing with factor variables within `lm()`, but we won't cover those in this tutorial.
 
-Here is an example of specifying a linear model that analyzes whether participants'  kindergarten standardized math test scores varies as a function of the urbanicity of their school. Note that the reference category for the k-1 urbanicity dummy variables is the "city" category.
+Here is an example of specifying a linear model that analyzes whether participants'  kindergarten standardized math test scores varies as a function of the urbanicity of their school. Note that the reference category for the k-1 `urbanicity` dummy variables is the "city" category.
 
 With an interval/ratio-level outcome variable and a more than 2-category nominal predictor variable, this is essentially the same as conducting an ANOVA. We will use the same variables to demonstrate a oneway ANOVA in the next section. 
 
