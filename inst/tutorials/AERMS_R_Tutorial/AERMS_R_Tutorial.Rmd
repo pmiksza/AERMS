@@ -157,7 +157,7 @@ R also recognizes three additional data types:
 -   Logical - TRUE or FALSE Boolean values
 -   Complex - for the use of imaginary numbers, indicated by "i"
 
-## Assigning "Objects" and "Storing" Information in the Global Environment
+## Assigning Objects and Storing Information in the Global Environment
 
 R can store objects in its **global environment**, that is, it's memory.
 You can see any objects currently in the global environment in the upper
@@ -880,23 +880,24 @@ arguments that control outline and fill colors, point size, point shape, line th
 
 #### *Axis Labels*
 
-By default, **ggplot** will use variable names as axis label and will not include
+By default, `ggplot()` will use variable names as axis label and will not include
 any additional title or sub-title information. Adding custom labels and titles can
 be done by adding an additional function to the plot code of `+` `labs()` and
-specifying labels in quotes with arguments in the `labs()` function such as: `x = `, `y = `, 
-`title = `, `subtitle = `, or `caption = `.
+specifying labels in quotes with arguments in the `labs()` function such as: `x = `, `y = `,  `title = `, `subtitle = `, or `caption = `.
 
 #### *Adjusting Axis Ranges and Ticks*
 
 Sometimes when plotting quantitative variables, the default plot will produce 
 axes and indicators or "ticks" of values that make it challenging to interpret 
-the range of values in a plot. You can customize x and y axes in **ggplot** by adding additional functions such `+` `scale_x_continuous()` and `+` `scale_y_continuous()`. 
+the range of values in a plot. You can customize x and y axes in `ggplot()` by adding additional functions such `+` `scale_x_continuous()` and `+` `scale_y_continuous()`. 
 You can specify the range of values to be included by inserting the arguments `limits =` into the previous functions, followed by a vector of two values representing the desired minimum and maximum, such as, `+` `scale_x_continuous(limits = c(1, 100))` - that would create an x axis bound by 1 and 100.
 
 If, say, you'd like to customize the axis ticks that are shown between the axis 
-minimum and maximum values, then you could also insert the argument `breaks = ` into the  the `scale_x_continuous()` function, followed by a vector of values
+minimum and maximum values, then you could also insert the argument `breaks =` into 
+the `scale_x_continuous()` function, followed by a vector of values
 specifying each tick point. For example, the following code would produce an x axis
-with a range of 1 to 100 and ticks at every multiple of 10: 
+with a range of 1 to 100 and ticks at every multiple of 10:
+
 * `scale_x_continuous(limits = c(1, 100), breaks = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100))`.
 
 There are also similar methods available for customizing axes representing all 
@@ -904,22 +905,22 @@ sorts of variable types, not just quantitative variables.
 
 #### *Theme Elements*
 
-The general "look" of a plot can be controlled with a number of functions that 
-can be inserted within a `+` `theme()` layer. Take a look at the online 
-documentation of the various elements that can be adjusted within a theme layer 
+The general "look" of a plot can be controlled with a number of arguments that 
+can be specified within a `+` `theme()` layer. Take a look at the online 
+documentation of the various elements that can be adjusted within a theme layer: 
 [Theme Element Options](https://ggplot2.tidyverse.org/reference/theme.html). 
 The options are certainly numerous enough that they can be overwhelming when getting started. 
 
-However, *ggplot2* also has several complete themes that you could use which 
+However, **ggplot2** also has several complete themes that you could use which 
 convert many elements of a plot to a particular style. You can see some of the 
 options for complete themes at the *tidyverse* website as well: [Complete Theme Options](https://ggplot2.tidyverse.org/reference/ggtheme.html). The name of the
-the complete theme is typically appended to the `theme()` function. For example, 
-to use what is referred to as a minimalist style in *ggplot2*  you could add a 
+the complete theme is typically appended to the `ggplot()` function. For example, 
+to use what is referred to as a minimalist style in `ggplot()`  you could add a 
 layer that looks something like: `+` `theme_minimal()`.
 
 ### *Histogram*
 
-Here is code for a histogram depicting the distribution of the students' 1st grade standardized math test score variable from the `InferentialTestData` data set.
+Here is code for a histogram depicting the distribution of the students' 1st grade standardized math test score variable.
 
 ```{r histogramDetail1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(InferentialTestData, aes(x = mathtest1)) + geom_histogram()
@@ -938,15 +939,14 @@ ggplot(InferentialTestData, aes(x = mathtest1)) +
   theme_minimal()
 ```
 
-Use this code space to customize your own histogram of math test scores.
+Use this code space to customize your own histogram of `mathtest1` scores.
 
 ```{r histogramDetail_user, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ```
 
 ### *Boxplot*
 Here is code for a vertical boxplot depicting the distribution of the students' 
-1st grade standardized math test score variable from the `InferentialTestData` 
-data set.
+1st grade standardized math test score variable.
 
 ```{r boxplot1Detail1, exercise = TRUE, exercise.eval = FALSE}
 ggplot(InferentialTestData, aes(y = mathtest1)) + geom_boxplot()
@@ -968,17 +968,15 @@ ggplot(InferentialTestData, aes(y = mathtest1)) +
   theme_classic()
 ```
 
-Use this code space to customize your own boxplot of math test scores.
+Use this code space to customize your own boxplot of `mathtest1` scores.
 
 ```{r boxplot_userDetail, exercise = TRUE, exercise.eval = FALSE}
 ```
 
 ### *Barplot*
 
-Here is code for a barplot depicting the students' urbanicity variable from the `InferentialTestData` data set. Note that the labels for each bar are taken 
-directly from the factor variable levels. You can change those by relabeling the
-levels of factor variable outside of the `ggplot()` function using the `labels = `
-argument in the `factor()` function.
+Here is code for a barplot depicting `urbanicity` variable. Note that the labels 
+for each bar are taken directly from the factor variable levels. You can change those by relabeling the levels of factor variable outside of the `ggplot()` function using the `labels = ` argument in the `factor()` function.
 
 ```{r barchartDetail, exercise = TRUE, exercise.eval = FALSE}
 ggplot(InferentialTestData, aes(x = urbanicity)) + geom_bar()
@@ -996,7 +994,10 @@ ggplot(InferentialTestData, aes(x = urbanicity, fill = music)) +
 ```
 
 Here is code for the same barplot with additional customizations. Note that with
-two variables, it is necessary to make changes in color with more specific code.
+two variables, you can also specify the color scheme with more specific code.
+In this example, the `scale_fill_manual()` function is used to adjust the look
+of the `fill =` aesthetic. You will find similar functions for other aesthetic 
+mappings (`scale_color_manual()`, `scale_linetype_manual()`, etc.).
 
 ```{r barchart_crosstabDetail2, exercise = TRUE, exercise.eval = FALSE}
 ggplot(InferentialTestData, aes(x = urbanicity, fill = music)) + 
