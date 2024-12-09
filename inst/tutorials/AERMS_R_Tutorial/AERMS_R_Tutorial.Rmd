@@ -1192,20 +1192,20 @@ If the variances of our groups were not equal, we could adjust the default setti
 
 If we needed to compare "dependent samples" instead, then we could adjust the `paired =` argument from its default setting of `FALSE` to `paired = TRUE`.
 
-Use the code space below to test whether participants' socioeconomic status (i.e., a dependent variable in this case, `ses`) varies as a function of whether participants were in music or not (i.e., an independent variable, `music`).
+Use the code space below to test whether participants' socioeconomic status, `ses` (i.e., a dependent variable in this case, `ses`) varies as a function of whether participants were in music or not, `music` (i.e., an independent variable, `music`).
 ```{r independent_tuser, exercise = TRUE, exercise.eval = FALSE}
 ```
 
 ### *Effect Size for Comparing Two Independent Samples*
 
-Calculating the effect size for the difference between two independent means (i.e., Cohen's d, `cohens_d()`) involves similar code:
+Calculating the effect size for the difference between two independent means (i.e., Cohen's d) involves similar code with the `cohens_d()` function:
 ```{r cohen_d, exercise = TRUE, exercise.eval = FALSE}
 InferentialTestData %>% cohens_d(mathtest1 ~ music)
 ```
 
-The same changes to arguments within the `cohens_d()` argument as describe above can be made if the analyses involved independent samples with unequal variance (`var.equal = FALSE`) or paired samples (`paired = TRUE`). Similarly, an argument specifying `hedges.correction = TRUE` can be added if Hedge's G is preferred.
+The same options to arguments described above can be made in the `cohens_d()` function if the analyses involved independent samples with unequal variance (`var.equal = FALSE`) or paired samples (`paired = TRUE`). Similarly, an argument specifying `hedges.correction = TRUE` can be added if Hedge's G is preferred.
 
-Use the code space below to determine the effect size of the difference in participants' socioeconomic status as a function of whether participants were in music or not.
+Use the code space below to determine the effect size of the difference in participants' socioeconomic status, `ses`, as a function of whether participants were in music or not, `music`.
 ```{r cohen_duser, exercise = TRUE, exercise.eval = FALSE}
 ```
 
@@ -1218,7 +1218,7 @@ InferentialTestData %>% anova_test(mathtestk ~ urbanicity)
 
 ```
 
-Use the code space below to run a similar test, but with 1st grade standardized math test scores as the dependent variable.
+Use the code space below to run a similar test, but with 1st grade standardized math test scores, `mathtest1` as the dependent variable.
 
 ```{r anova_user, exercise = TRUE, exercise.eval = FALSE}
 
@@ -1235,9 +1235,9 @@ Alternatively the `pairwise_t_test()` function with an additional argument of `p
 
 ### *Factorial Designs*
 
-ANOVA models involving more than one independent variable (and interactions) can be estimated with the same `anova_test()` function used above, or with the `factorial_design()` function.
+ANOVA models involving more than one independent variable (and interactions) can be estimated with the same `anova_test()` function used above or with the `factorial_design()` function.
 
-Here is an example of a test of whether 1st grade standardized math test scores vary as a function of music participation, urbanicity - or whether the effect of music participation depends upon students' urbanicity, that is, the interaction of music and urbanicity. 
+Here is an example of a test of whether 1st grade standardized math test scores vary as a function of (a) music participation - `music`, (b) urbanicity - `urbanicity`, or (c) whether the effect of music participation depends upon students' urbanicity, that is, the interaction of `music` and `urbanicity`. 
 
 (Also note that the argument `type = 3` was added to this code to indicate the analysis should use type 3 sums of squares. Type 3 sums of squares is a default in some commercial statistical packages such as SPSS.)
 
@@ -1256,7 +1256,7 @@ InferentialTestData %>% group_by(music) %>%
 
 ### *Specifying Within-Subjects Factors*
 
-All of the ANOVA examples so far have involved between-subjects factors, exclusively. Specifying models with within-subjects factors is a bit more complicated in R. 
+All of the ANOVA examples so far have involved between-subjects factors, exclusively. Specifying models with within-subjects factors is a bit more complicated in R. Exploring the options for such models is a bit beyond the scope of this tutorial.
 
 ### *Assumptions and Non-Parametric Analogs*
 
@@ -1266,7 +1266,7 @@ Typical tests of assumptions for the tests mentioned above are also available in
 * shapiro_test()
 * identify_outliers()
 
-The non-parametric analogs of the t-test for nominal or ordinal outcome data are similarly accessible in the **rstatix** package. Use the `?function_name()` help call on the tests below to see what options are avaialble:
+The non-parametric analogs of the t-test and ANOVA for nominal or ordinal outcome data are similarly accessible in the **rstatix** package. Use the `?function_name()` help call on the tests below to see what options are avaialble:
 
 * `chisq_test()`
 * `mcnemar_test()`
