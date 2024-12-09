@@ -113,14 +113,10 @@ click "**Run Code**" in the upper right to see the output/results:
 
 ### *Commenting in Code*
 
-It's usually a good idea to make notes that you can refer to later on so
-that you will know what your code is trying to accomplish at a later
-date. You can create commented code by using the number sign symbol
-"**\#**."
+It's usually a good idea to make notes while coding so that you can so it will be easier to remember what your code is trying to accomplish at a later
+date. You can create commented code by using the number sign symbol: `#`.
 
-Run the following code and notice how the "commented" bits are in a
-different color as well as how only the non-commented bits are actually
-run by R.
+Notice how the "commented" bits are in a different color in the following code as well as how only the non-commented bits are actually run by R.
 
 ```{r commenting, exercise = TRUE, exercise.eval = FALSE}
 # This is a comment - it will essentially be ignored by R
@@ -137,7 +133,7 @@ run by R.
 
 It is important to recognize the **type** of variable you are using when
 working in R since it will have major implications for the sorts of
-analyses you can conduct and whether you will be able to execute your
+analyses you can conduct as well as  whether you will be able to execute your
 code without errors.
 
 There are four levels of measurement commonly described in statistics:
@@ -149,21 +145,17 @@ There are four levels of measurement commonly described in statistics:
 R recognizes similar types of data, but has slightly different
 distinctions and uses different terminology:
 
--   Numeric - continuous quantitative values with values following
-    decimal points (10.5, 55.3, 787.0)
--   Integer - discrete quantiative values with no decimal values (1, 55,
-    100)
--   Factor - discrete categories with each category called a "level" (an
-    analog to a nominal variable) ("cat", "dog", "fish")
--   Ordered factor - discrete categories that are ordered (an analogy to
-    an ordinal variable) ("never", "sometimes", "always")
+-   Numeric - continuous quantitative values (10.5, 55.3, 787.0)
+-   Integer - discrete quantiative values with no decimal values (1, 55, 100)
+-   Factor - discrete categories with each category called a "level" (an analog to a nominal variable) ("cat", "dog", "fish")
+-   Ordered factor - discrete categories that are ordered (analogous to an ordinal variable) ("never", "sometimes", "always")
 
-R also recognizes two additional data types:
+R also recognizes three additional data types:
 
 -   Character - letters with no additional information attached ("k", "R
-    is exciting", "FALSE", "11.5") (referred to as "string" in SPSS)
+    is exciting", "FALSE") (referred to as "string" in SPSS)
 -   Logical - TRUE or FALSE Boolean values
--   Complex - for the use of "imaginary" numbers, indicated by "i"
+-   Complex - for the use of imaginary numbers, indicated by "i"
 
 ## Assigning "Objects" and "Storing" Information in the Global Environment
 
@@ -350,7 +342,7 @@ str(my_data)
 R comes "preloaded" with many, many functions. That is what is referred
 to as "base" R. 
 
-A function is essentially a self-contained bundle of code stored in a single name that can be used to execute the whole bundle on a given object (or objects) at once. For example, the `data.frame()`, `head()`, `tail()`, and `str()` functions used above each represent functions that take a dataframe object and execute some length of code to describe the contents of that object. In contrast, we used the `as.integer()` function above to take a single vector object and execute some length of code to coerce a numeric object into an integer class object.
+A function is essentially a self-contained bundle of code stored in a single name that can be used to execute the whole bundle on a given object (or objects) at once. For example, the `data.frame()`, `head()`, `tail()`, and `str()` functions used above each represent functions that take a dataframe object and execute some length of code to describe the contents of that dataframe object In contrast, we used the `as.integer()` function above to take a single vector object and execute some length of code to coerce a numeric object into an integer class object.
 
 The elements that are put "inside parentheses" of a function are called **arguments**, which are specifications for options regarding how a given function can be used. There are at least three easy way to learn about the specific arguments possible for each function and how to use them:
 
@@ -954,7 +946,7 @@ degree of transparency, geom dimensions, and so on. Various aesthetic mappings w
 By default, *ggplot* will use variable names as axis label and will not include
 any additional title or sub-title information. Adding custom labels and titles can
 be done by adding an additional function to the plot code of `+` `labs()` and
-specifying labels in quotes for elements of the plot such as: 'x = ', 'y = ', 
+specifying labels in quotes for elements of the plot such as: `x = `, `y = `, 
 `title = `, `subtitle = `, or `caption = `.
 
 #### *Adjusting Axis Ranges and Ticks*
@@ -1136,7 +1128,7 @@ We will continue to use the `InferentialTestData` dataset described in the previ
 
 ### *Using Formula Notation*
 
-For the analyses below, the formula notation will involve specifying an dependent variable (i.e., an outcome, `y`) and independent variables (i.e., predictors, `x`). The tilde, `~`, symbol is used to separate the dependent from the independent variables. Therefore, a basic analysis of the influence of one independent variabl on one dependent variable would look like this:
+For the analyses demonstrated in the next section, the formula notation will involve specifying an dependent variable (i.e., an outcome, `y`) and independent variables (i.e., predictors, `x`). The tilde, `~`, symbol is used to separate the dependent from the independent variables. Therefore, a basic analysis of the influence of one independent variabl on one dependent variable would look like this:
 
 |   `y ~ x`
 \
