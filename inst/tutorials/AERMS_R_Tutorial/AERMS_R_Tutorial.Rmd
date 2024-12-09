@@ -195,11 +195,10 @@ analyses, and custom built functions.
 ### *Vectors*
 
 You can also assign a collection of values, i.e., a **vector** of
-values, to an object using the **concatenate** function: `c()` and
-listing the values seperated by commas. The following code shows the
-storage of variables of different data types, *numeric*, *integer*, and
-*character*. Note also that you will have to use parentheses when
-inputing character values.
+values, to an object using the **concatenate** function `c()` as long as you
+list the values separated by commas. The following code shows the
+storage of variables of three different data types: *numeric*, *integer*, and
+*character*. Note also that you will have to use parentheses around the values when including character values in a vector.
 
 R will do a pretty good job at guessing what type of data the values in
 each variable represent when the values are numbers. But, R will
@@ -222,7 +221,7 @@ character_variable
 ```
 
 As with single value assignments to objects, R will also allow you to
-perform operationswith stored vectors (or really any kind of data type).
+perform operations with stored vectors (or really any kind of data type).
 See the following as an example:
 
 ```{r operate_vectors, exercise = TRUE, exercise.eval = FALSE}
@@ -238,7 +237,7 @@ integer_variable/2
 ### *Dataframes*
 
 R can store and operate upon all sorts of data objects (values,
-integers, matrices, and so on). An object that serves as the basis for
+vectors, matrices, and so on). An object that serves as the basis for
 many statistical analyses is the **dataframe**. A dataframe is R's term
 for what most would simply call a data set: an arrangement of data with
 variables as columns and entries as rows.
@@ -263,9 +262,8 @@ my_data
 ```
 
 You can also examine a data frame using a variety of different *viewing*
-functions. See below how the usage of `head()`: returns the first six
-rows, `tail()`: returns the last six rows, and `str()`: displays the
-structure of the data.
+functions. See below how the `head()` function returns the first six
+rows, the `tail()` function returns the last six rows, and the `str()` function displays the structure of the data.
 
 ```{r view_dataframe, exercise = TRUE, exercise.eval = FALSE}
 # First, we store the variables under designated assignments.
@@ -284,8 +282,8 @@ str(my_data)
 ```
 
 To view a single variable from a dataframe you will need to use an
-additional symbol the `$` to specify to R that it should search in the
-particular dataframe the variable is housed in.
+additional symbol to specify to R that it should search in the
+particular dataframe the variable is housed in, the `$` after the name of the dataframe, then the name of the variable as in: `dataframe_name$variable_name`.
 
 ```{r view_dataframe_select, exercise = TRUE, exercise.eval = FALSE}
 # Again, these first lines are just creating the dataframe for this example.
@@ -304,16 +302,12 @@ three variables in the data frame were summarized as "num" (i.e.,
 numeric) or "chr" (i.e., character). R assumed that `integer_variable`
 was a numeric variable type even though none of the values had decimal
 places. It is often necessary to manually tell R what type of data each
-variable represents. For example, we can specify that `integer_variable`
+variable represents. For example, we can specify that the `integer_variable`
 is an integer type variable with the `as.integer()` function and that
 the `character_variable` is a factor type variable with the
-`as.factor()` function. We can replace the original variable in the
-dataframe with the new one, now assigned to its specific type, by using
-an object assignment approach. Alternatively, we could ask for R to
-create a new variable in the dataframe to represent the newly specified
-variable while retaining the original. You can also use the `class()` function
-to identify the type of data the variable represents (or the "type" of any
-object in R, for that matter).
+`as.factor()` function. 
+
+We can replace the original variable in the dataframe with the new one, now assigned to its specific type, by using an object assignment approach. Alternatively, we could ask for R to create a new variable in the dataframe to represent the newly specified variable while retaining the original. You can also use the `class()` function to identify the type of data the variable represents (or the "type" of any object in R, for that matter).
 
 For example:
 
