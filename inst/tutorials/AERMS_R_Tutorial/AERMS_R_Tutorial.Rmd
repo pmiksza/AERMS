@@ -507,7 +507,7 @@ The pipe operator allows you to write code that can be more intuitive to interpr
 
 For these exercises, we will use a dataset provided in this
 tutorial package called `DescriptiveData`. This dataset contains four
-variables meant to represent characteristics of singers in a choir: (a) `Age` — a numeric variable (i.e., ratio measure), (b) `Years.experience.in.singing ensemble` - an integer variable (i.e., ratio measure), (c) `Sex` - self-reported biological sex at birth, a two-level factor variable (i.e., nominal measure), and (d) `Preference.for.rehearsal.frequency` - a five-level ordered factor variable (i.e., ordinal measure). This particular dataset is used to illustrate analyses in "Chapter 4: Descriptive Analysis" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
+variables meant to represent characteristics of singers in a choir: (a) `Age` — a numeric variable (i.e., ratio measure), (b) `Years.experience.in.singing.ensemble` - an integer variable (i.e., ratio measure), (c) `Sex` - self-reported biological sex at birth, a two-level factor variable (i.e., nominal measure), and (d) `Preference.for.rehearsal.frequency` - a five-level ordered factor variable (i.e., ordinal measure). This particular dataset is used to illustrate analyses in "Chapter 4: Descriptive Analysis" of the Miksza & Elpus text, [*Design and Analysis for Quantitative Research in Music Education*](https://www.amazon.com/Design-Analysis-Quantitative-Research-Education/dp/0199391904).
 
 The first six rows of the data are shown below:
 
@@ -530,7 +530,7 @@ DescriptiveData %>% select(Age) %>% min()
 ```
 
 Use the code space below to try out the `select()` function and the
-`max()` function to identify the largest `Years.experience.in.singing ensemble` among the participants:
+`max()` function to identify the largest `Years.experience.in.singing.ensemble` among the participants:
 
 ```{r select_user, exercise = TRUE, exercise.eval = FALSE}
 
@@ -718,7 +718,7 @@ matrix of more than two variables.
 It could also be helpful to be able to examine correlations according to sub-groups. 
 This code first filters the `Sex` variable so only those who reported their biological 
 sex are considered in the analyses, then it will result in the Pearson correlation 
-between `Age` and `Years.experience.in.singing ensemble` broken out by participants' 
+between `Age` and `Years.experience.in.singing.ensemble` broken out by participants' 
 reported biological `Sex`.
 
 ```{r correlate2, exercise = TRUE, exercise.eval = FALSE}
@@ -845,7 +845,7 @@ ggplot(DescriptiveData, aes(x = Preference.for.rehearsal.frequency,
 Creating scatterplots to depict the relationship between two
 quantitative variables will feel similarly intuitive once you get the
 hang of the grammar of graphics approach. Here is a scatterplot of the
-`Age` and `Years.experience.in.singing ensemble` variables.
+`Age` and `Years.experience.in.singing.ensemble` variables.
 
 ```{r scatterplot1, exercise = TRUE, exercise.eval = FALSE, message = FALSE}
 ggplot(DescriptiveData, aes(x = Age,
