@@ -43,6 +43,27 @@ of (a) a little knowledge, (b) practice, and (c) strategic "Googling"
 will eventually allow you to use R for a wide variety of tasks fairly
 quickly.
 
+### *Why I like R*
+
+1. It's Free
+2. Unlimited customization via packages
+* I need a program that has a wide variety of tools to match the wide variety of research interests I have, analytical tools I need, and data sources I deal with
+* Descriptives, Regression family, Generalized estimating equations, Path analyses, Latent variable analyses, Latent class analysis, Text analyses and topic modeling, Questionnaire data, Complex survey data, Experimental outcome measures, Perceptual measures
+3. You can make beautiful, highly customizable graphs
+4. You can work with multiple data files at once
+5. You can work with multidimensional data structures beyond table formats
+6. You can do variety of other things a programming language allows
+* Scraping data from websites/databases, Web-based shiny apps and dashboards, It's easy to create markdown documents, It's easy to create tutorials, You can build packages to share project information, It's really easy to interface with Github
+7. R has a very helpful community of users
+8. My colleagues in psychology, education, cognitive science, health, etc. use R
+9. R is used outside of academia, and knowing R is a marketable skill
+10. I like the programming language, it has an internal logic that is readable, and has virtually no limits on it’s application
+
+Things I like about Stata:
+
+1. The learning curve for Stata is less steep
+2. Stata is really good for econometric analysis and better than R for working with complex survey data
+
 ## Creating an R Project to Organize your Data Analysis Files
 
 ### *R Projects*
