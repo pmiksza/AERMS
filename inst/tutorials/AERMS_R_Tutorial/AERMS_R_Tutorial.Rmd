@@ -693,7 +693,7 @@ that type of task.
 DescriptiveData %>% group_by(Sex) %>% get_summary_stats(Age, type = "common")
 ```
 
-### *Correlation*
+### *Corrlation*
 
 Examining bivariate correlations is also a common analysis task. As with all 
 things in R, there are many, many ways to calculate correlation coefficients and 
