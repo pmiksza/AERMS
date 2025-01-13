@@ -168,7 +168,7 @@ R recognizes similar types of data, but has slightly different
 distinctions and uses different terminology:
 
 -   Numeric - continuous quantitative values (10.5, 55.3, 787.0)
--   Integer - discrete quantiative values with no decimal values (1, 55, 100)
+-   Integer - discrete quantitative values with no decimal values (1, 55, 100)
 -   Factor - discrete categories with each category called a "level" (an analog to a nominal variable) ("cat", "dog", "fish")
 -   Ordered factor - discrete categories that are ordered (analogous to an ordinal variable) ("never", "sometimes", "always")
 
